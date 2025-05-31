@@ -44,7 +44,7 @@
     {\large Autor: Flores Aycaya Blanca Beatriz \par}
     {\large Año: 2025\par}
     \vspace*{1cm}
-    \includegraphics[width=0.5\textwidth]{programming_image.jpg} % Imagen representativa
+    \includegraphics[width=0.5\textwidth]{programing.png} % Imagen representativa
 \end{titlepage}
 
 % Índice interactivo
@@ -65,10 +65,10 @@ Programar es darle instrucciones a una computadora para que realice tareas. Es c
 \textbf{Definición:} La programación es el proceso mediante el cual se crean aplicaciones, software y sistemas operativos que permiten la interacción con dispositivos tecnológicos.
 
 \begin{center}
-\includegraphics[width=0.6\textwidth]{imagenRobot.png}
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{imagesDeRobot1.jpg}
+    \includegraphics[width=0.5\linewidth]{robotPro.png}
     \caption{Un robot programador siguiendo instrucciones.}
     \label{fig:enter-label}
 \end{figure}
@@ -205,75 +205,8 @@ int residuo = 7 % 2; // 1
 \textit{¡Ahora estás listo para trabajar con arreglos (arrays) en el siguiente capítulo!}
 \end{center}
 
-% Glosario
-\chapter*{Glosario}
-\addcontentsline{toc}{chapter}{Glosario}
-\begin{itemize}
-\item \textbf{Programar:} Proceso de crear instrucciones que una computadora puede entender y ejecutar.
-\item \textbf{Variable:} Espacio de memoria que guarda un valor de un tipo específico (ej. entero, cadena).
-\item \textbf{Sintaxis:} Conjunto de reglas que definen cómo se escriben correctamente las instrucciones en un lenguaje de programación.
-\item \textbf{Recursividad:} Técnica en la cual una función se llama a sí misma para resolver un problema dividiéndolo en subproblemas más pequeños.
-\end{itemize}
 
 % Solucionario
-\chapter*{Solucionario}
-\addcontentsline{toc}{chapter}{Solucionario}
-
-\section*{Actividad 1}
-\textbf{Enunciado:} Escribe un programa que pida tu nombre y edad, y calcule cuántos años tendrás en 5 años.
-
-\textbf{Solución:}
-
-#include <iostream>
-using namespace std;
-
-int main() {
-    string nombre;
-    int edad;
-
-    cout << "¿Cuál es tu nombre? ";
-    cin >> nombre;
-
-    cout << "¿Cuántos años tienes? ";
-    cin >> edad;
-
-    cout << "Hola " << nombre << ", en 5 años tendrás " << edad + 5 << " años." << endl;
-
-    return 0;
-}
-
-\section*{Actividad 2}
-\textbf{Enunciado:} Crea un programa que calcule el promedio de 5 notas ingresadas por el usuario.
-
-\textbf{Solución:}
-\begin{lstlisting}[language=C++]
-#include <iostream>
-using namespace std;
-
-int main() {
-    float notas[5];
-    float suma = 0;
-
-    for (int i = 0; i < 5; i++) {
-        cout << "Ingrese la nota #" << (i+1) << ": ";
-        cin >> notas[i];
-        suma += notas[i];
-    }
-    float promedio = suma / 5;
-    cout << "El promedio es: " << promedio << endl;
-    return 0;
-}
-\end{lstlisting}
-
-
-    float promedio = suma / 5.0;
-    cout << "El promedio es: " << promedio << endl;
-
-    return 0;
-}
-
-
-\end
 
 
 \chapter{Arrays}
@@ -401,10 +334,11 @@ Una \textbf{pila (stack)} es una estructura de datos que sigue el principio \tex
 Las operaciones más comunes en una pila son:
 
 \begin{itemize}
-    \item \textbf{push:} Inserta un nuevo elemento en la cima de la pila.
-    \item \textbf{pop:} Elimina el elemento que está en la cima de la pila.
-    \item \textbf{top:} Muestra el valor del elemento en la cima sin eliminarlo.
-    \item \textbf{empty:} Verifica si la pila está vacía.
+ \item \textbf{push:} Inserta un nuevo elemento en la cima de la pila.
+\item \textbf{pop:} Elimina el elemento que está en la cima de la pila.
+ \item \textbf{top:} Muestra el valor del elemento en la cima sin eliminarlo.
+\item \textbf{empty:} Verifica si la pila está vacía.
+
 \end{itemize}
 
 \section{Implementación de una Pila con Arreglos}
@@ -989,7 +923,8 @@ int main() {
     lista.mostrar();  // Muestra la lista de cabeza a cola
 
     cout << "Lista de cola a cabeza: ";
-    lista.mostrarReversa();  // Muestra la lista de cola a cabeza
+    lista.mostrarReversa();  // Muestra la lista de cola
+    a cabeza
 
     return 0;
 }
@@ -1088,9 +1023,9 @@ Este código crea una lista circular, inserta tres elementos y muestra la lista 
 \section{Aplicaciones de las Listas Doblemente Enlazadas y Circulares}
 Las listas doblemente enlazadas y circulares tienen varias aplicaciones en la programación:
 \begin{itemize}
-    \item **Navegadores web**: Usan listas doblemente enlazadas para almacenar el historial de páginas, permitiendo navegar hacia adelante y hacia atrás.
-    \item **Sistemas de mensajería**: Los mensajes pueden ser procesados en una lista circular, donde el último mensaje siempre apunta al primero.
-    \item **Memoria dinámica**: Las listas circulares son útiles para la administración de memoria en sistemas operativos.
+    \item \textbf{Navegadores web:} Usan listas doblemente enlazadas para almacenar el historial de páginas, permitiendo navegar hacia adelante y hacia atrás.
+    \item \textbf{Sistemas de mensajería:} Los mensajes pueden ser procesados en una lista circular, donde el último mensaje siempre apunta al primero.
+    \item \textbf{Memoria dinámica:} Las listas circulares son útiles para la administración de memoria en sistemas operativos.
 \end{itemize}
 
 \section{Actividad sugerida}
@@ -1218,7 +1153,8 @@ int main() {
     cout << "Elemento retirado: " << cola.dequeue() << endl;
     cout << "Elemento retirado: " << cola.dequeue() << endl;
 
-    cout << "Elemento al frente después de eliminar: " << cola.front() << endl;
+    cout << "Elemento al frente después de eliminar: " 
+    << cola.front() << endl;
 
     return 0;
 }
@@ -1322,7 +1258,8 @@ int main() {
     cout << "Elemento retirado: " << cola.dequeue() << endl;
 
     cola.enqueue(40);  // Reutiliza el espacio vacío
-    cout << "Elemento al frente después de agregar 40: " << cola.front() << endl;
+    cout << "Elemento al frente después de agregar 40: " 
+    << cola.front() << endl;
 
     return 0;
 }
@@ -1369,7 +1306,8 @@ public:
             cout << "No hay clientes en la cola." << endl;
             return;
         }
-        cout << "Atendiendo a " << cola[frente].nombre << endl;
+        cout << "Atendiendo a " << cola[frente].nombre <<
+        endl;
         if (frente == fin) frente = fin = -1;  // Cola vacía
         else frente++;
     }
@@ -1380,7 +1318,8 @@ public:
             return;
         }
         for (int i = frente; i <= fin; i++) {
-            cout << cola[i].nombre << " (ID: " << cola[i].id << ") <- ";
+            cout << cola[i].nombre << " (ID: " << 
+            cola[i].id << ") <- ";
         }
         cout << endl;
     }
@@ -1388,7 +1327,7 @@ public:
 \end{lstlisting}
 \end{tcolorbox}
 
-\subsection{2. Cola para Procesamiento de Tareas en un Sistema Operativo}
+\section{2. Cola para Procesamiento de Tareas en un Sistema Operativo}
 En sistemas operativos, las colas se utilizan para gestionar las tareas que están a la espera de ser procesadas. El sistema toma la primera tarea en la cola y la procesa.
 
 \begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola de Tareas]
@@ -1424,7 +1363,8 @@ public:
             cout << "No hay tareas para procesar." << endl;
             return;
         }
-        cout << "Procesando tarea: " << cola[frente].descripcion 
+        cout << "Procesando tarea: " << cola[frente]
+        .descripcion 
         << endl;
         if (frente == fin) frente = fin = -1;  // Cola vacía
         else frente++;
@@ -1483,7 +1423,8 @@ public:
             return;
         }
         cout << "Imprimiendo: " <<
-        cola[frente].documento << " (" << cola[frente].paginas << 
+        cola[frente].documento << " (" << cola[frente].paginas
+        << 
         " páginas)" << endl;
         if (frente == fin) frente = fin = -1;  // Cola vacía
         else frente++;
@@ -1651,7 +1592,7 @@ int main() {
 \end{lstlisting}
 \end{tcolorbox}
 
-Este código evalúa la expresión postfija "23+5*" y devuelve el resultado. La pila almacena los operandos mientras procesa los operadores.
+Este código evalúa la expresión postfija "23+5 " y devuelve el resultado. La pila almacena los operandos mientras procesa los operadores.
 
 \subsection{2. Deshacer y Rehacer Operaciones en un Editor de Texto}
 En aplicaciones como editores de texto, las pilas se utilizan para implementar las funciones de deshacer (undo) y rehacer (redo). Cada acción del usuario se guarda en una pila de deshacer, y cuando el usuario desea deshacer una acción, el último elemento de la pila se retira.
@@ -1675,7 +1616,8 @@ public:
 
     void deshacer() {
         if (undoStack.empty()) {
-            cout << "No hay más acciones para deshacer." << endl;
+            cout << "No hay más acciones para deshacer." 
+            << endl;
         } else {
             string texto = undoStack.top();
             undoStack.pop();
@@ -1753,11 +1695,14 @@ int main() {
 Este código simula cómo las funciones se colocan y retiran de la pila de llamadas a medida que se ejecutan.
 
 \section{Resumen del Capítulo}
-En este capítulo, aprendimos sobre las **pilas** y su funcionamiento según el principio **LIFO**. Implementamos pilas con arreglos y vimos ejemplos prácticos de aplicaciones de las pilas, tales como:
+En este capítulo, aprendimos sobre las \textbf{\textit{pilas}} y su funcionamiento según el principio \textit{\textbf{LIFO}}. Implementamos pilas con arreglos y vimos ejemplos prácticos de aplicaciones de las pilas, tales como:
 
-1. **Evaluación de expresiones aritméticas**.
-2. **Deshacer y rehacer operaciones en un editor de texto**.
-3. **Gestión de funciones en un programa**.
+1. Evaluación de expresiones aritméticas.
+
+2. Deshacer y rehacer operaciones en un editor de texto.
+
+3. Gestión de funciones en un programa.
+
 
 Las pilas son estructuras de datos fundamentales en la programación y tienen una amplia gama de aplicaciones en situaciones del mundo real.
 
@@ -1826,9 +1771,11 @@ int factorial(int n) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
-1. **Caso base**: Cuando \( n = 0 \), retornamos 1.
-2. **Llamada recursiva**: La función se llama a sí misma con \( n - 1 \) hasta que llega al caso base.
+\textbf{\textit{EXPLICACION:}}
+
+1. \textbf{Caso base:} Cuando \( n = 0 \), retornamos 1.
+
+2. \textbf{Llamada recursiva:} La función se llama a sí misma con \( n - 1 \) hasta que llega al caso base.
 
 \section{Ejemplo 2: Serie de Fibonacci}
 La serie de Fibonacci es una sucesión matemática donde cada número es la suma de los dos anteriores. La serie comienza con \( 0, 1, 1, 2, 3, 5, 8, 13, \dots \).
@@ -1850,9 +1797,11 @@ int fibonacci(int n) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
-1. **Caso base**: Cuando \( n = 0 \), retornamos 0; cuando \( n = 1 \), retornamos 1.
-2. **Llamada recursiva**: La función se llama a sí misma con los valores \( n-1 \) y \( n-2 \).
+\textit{\textbf{EXPLICACION:}}
+
+1. \textbf{Caso base:} Cuando \( n = 0 \), retornamos 0; cuando \( n = 1 \), retornamos 1.
+
+2.\textbf{ Llamada recursiva:} La función se llama a sí misma con los valores \( n-1 \) y \( n-2 \).
 
 Este ejemplo ilustra cómo la recursividad puede ser simple y poderosa, pero también ineficiente para valores grandes debido a la repetición de cálculos. 
 
@@ -1861,30 +1810,40 @@ La búsqueda binaria es un algoritmo eficiente para encontrar un valor en un arr
 
 \textbf{Fórmula:}
 \[
-\text{Si el valor buscado es mayor que el valor medio, buscamos en la mitad superior. Si es menor, buscamos en la mitad inferior.}
+\text{\textbf{Si el valor buscado es mayor 
+que el valor medio,
+buscamos en la mitad superior. 
+
+Si es menor, buscamos
+en la mitad inferior.}}
 \]
 
 La versión recursiva de la búsqueda binaria en C++ es:
 
 \begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Búsqueda Binaria Recursiva]
 \begin{lstlisting}[language=C++]
-int busquedaBinaria(int arr[], int izquierda, int derecha, int valor) {
+int busquedaBinaria(int arr[], int izquierda, int derecha, 
+int valor) {
     if (izquierda > derecha) return -1; // No encontrado
 
     int medio = (izquierda + derecha) / 2;
 
     if (arr[medio] == valor) return medio;
     if (arr[medio] > valor)
-        return busquedaBinaria(arr, izquierda, medio - 1, valor);
+        return busquedaBinaria(arr, izquierda, 
+        medio - 1, valor);
     else
-        return busquedaBinaria(arr, medio + 1, derecha, valor);
+        return busquedaBinaria(arr, medio + 1, 
+        derecha, valor);
 }
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
-1. **Caso base**: Si el valor no se encuentra en el arreglo, se retorna -1.
-2. **Llamada recursiva**: La función se llama con los nuevos límites del arreglo en función de la comparación con el valor medio.
+\textbf{\textit{EXPLICACION:}}
+
+\textbf{1. Caso base}: Si el valor no se encuentra en el arreglo, se retorna -1.
+
+\textbf{2. Llamada recursiva:} La función se llama con los nuevos límites del arreglo en función de la comparación con el valor medio.
 
 \section{Ejemplos prácticos de uso de la Recursividad}
 La recursividad se utiliza en muchos problemas del mundo real. A continuación, se presentan tres ejemplos prácticos donde la recursividad es la solución más eficiente o natural.
@@ -1894,17 +1853,35 @@ Imagina un laberinto donde quieres encontrar un camino desde el inicio hasta la 
 
 \begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Resolver un Laberinto con Recursividad]
 \begin{lstlisting}[language=C++]
-bool resolverLaberinto(int laberinto[5][5], int x, int y, int salidaX, int salidaY) {
-    if (x == salidaX && y == salidaY) return true; // Caso base: salida encontrada
+bool resolverLaberinto(int laberinto[5][5], int x,
+int y, int salidaX, int salidaY) {
+    if (x == salidaX && y == salidaY) return true;
+    // Caso base: salida encontrada
 
     // Marcar la posición actual como visitada
     laberinto[x][y] = 2;
 
-    // Intentar mover hacia abajo, arriba, izquierda o derecha
-    if (x + 1 < 5 && laberinto[x + 1][y] == 0 && resolverLaberinto(laberinto, x + 1, y, salidaX, salidaY)) return true;
-    if (x - 1 >= 0 && laberinto[x - 1][y] == 0 && resolverLaberinto(laberinto, x - 1, y, salidaX, salidaY)) return true;
-    if (y + 1 < 5 && laberinto[x][y + 1] == 0 && resolverLaberinto(laberinto, x, y + 1, salidaX, salidaY)) return true;
-    if (y - 1 >= 0 && laberinto[x][y - 1] == 0 && resolverLaberinto(laberinto, x, y - 1, salidaX, salidaY)) return true;
+    // Intentar mover hacia abajo, arriba, izquierda 
+    o derecha
+    if (x + 1 < 5 && laberinto[x + 1][y] == 0 && 
+    
+    resolverLaberinto(laberinto, x + 1, y, salidaX, 
+    
+    salidaY)) return true;
+    if (x - 1 >= 0 && laberinto[x - 1][y] == 0 && 
+    
+    resolverLaberinto(laberinto, x - 1, y, salidaX, 
+    salidaY)) return true;
+    
+    if (y + 1 < 5 && laberinto[x][y + 1] == 0 && 
+    
+    resolverLaberinto(laberinto, x, y + 1, salidaX,
+    
+    salidaY)) return true;
+    if (y - 1 >= 0 && laberinto[x][y - 1] == 0 && 
+    
+    resolverLaberinto(laberinto, x, y - 1, salidaX,
+    salidaY)) return true;
 
     // Si no se encuentra la salida, retrocedemos
     return false;
@@ -1912,7 +1889,7 @@ bool resolverLaberinto(int laberinto[5][5], int x, int y, int salidaX, int salid
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{EXPLICACION:}
 Este ejemplo muestra cómo la recursividad puede ser utilizada para explorar todos los caminos posibles en un laberinto y encontrar la salida. Si se encuentra una ruta, la función retorna \texttt{true}.
 
 \subsection{2. Torres de Hanoi}
@@ -1922,17 +1899,24 @@ El problema de las Torres de Hanoi es un clásico problema recursivo que consist
 \begin{lstlisting}[language=C++]
 void hanoi(int n, char origen, char auxiliar, char destino) {
     if (n == 1) {
-        cout << "Mover disco 1 de " << origen << " a " << destino << endl;
+        cout << "Mover disco 1 de " << origen << " a "
+        
+        << destino << endl;
         return;
     }
-    hanoi(n - 1, origen, destino, auxiliar); // Mover n-1 discos
-    cout << "Mover disco " << n << " de " << origen << " a " << destino << endl;
-    hanoi(n - 1, auxiliar, origen, destino); // Mover los discos restantes
+    hanoi(n - 1, origen, destino, auxiliar); // Mover 
+    
+    n-1 discos
+    cout << "Mover disco " << n << " de " << origen
+    
+    << " a " << destino << endl;
+    hanoi(n - 1, auxiliar, origen, destino); //
+    Mover los discos restantes
 }
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{EXPLICACION:}
 Este problema muestra cómo la recursividad puede descomponer un problema complejo en subproblemas más simples, moviendo discos de una torre a otra. La función se llama a sí misma para mover los discos de la torre auxiliar.
 
 \subsection{3. Búsqueda en un Árbol Binario}
@@ -1947,25 +1931,31 @@ struct Nodo {
 };
 
 bool buscar(Nodo* raiz, int valor) {
-    if (raiz == nullptr) return false; // Caso base: árbol vacío
+    if (raiz == nullptr) return false; 
+    // Caso base: árbol vacío
 
-    if (raiz->dato == valor) return true; // Valor encontrado
+    if (raiz->dato == valor) return true; 
+    // Valor encontrado
 
     // Buscar en el subárbol izquierdo o derecho
-    return buscar(raiz->izquierdo, valor) || buscar(raiz->derecho, valor);
+    return buscar(raiz->izquierdo, valor) ||
+    buscar(raiz->derecho, valor);
 }
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{EXPLICACION:}
 Este código muestra cómo se puede usar recursividad para recorrer un árbol binario y buscar un valor en cualquiera de sus nodos.
 
 \section{Resumen del Capítulo}
 En este capítulo, exploramos la técnica de la **recursividad** y cómo se puede utilizar para resolver problemas complejos. Vimos ejemplos clásicos como el cálculo del factorial, la serie de Fibonacci y la búsqueda binaria. Además, discutimos tres ejemplos prácticos de recursividad en el mundo real:
 
-1. **Caminos en un Laberinto**.
-2. **Torres de Hanoi**.
-3. **Búsqueda en un Árbol Binario**.
+
+1. Caminos en un Laberinto.
+
+2. Torres de Hanoi.
+
+3. Búsqueda en un Árbol Binario.
 
 \begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen Visual]
 \begin{itemize}
@@ -1991,11 +1981,11 @@ Un algoritmo de ordenación es un proceso utilizado para reorganizar los element
 Existen varios algoritmos de ordenación, entre los más conocidos están:
 
 \begin{itemize}
-    \item **Ordenación por burbuja (Bubble Sort)**: Es simple pero ineficiente para listas grandes. Compara elementos adyacentes y los intercambia si están en el orden incorrecto.
-    \item **Ordenación por selección (Selection Sort)**: Encuentra el mínimo (o máximo) de la lista y lo coloca en la posición correcta.
-    \item **Ordenación por inserción (Insertion Sort)**: Construye el arreglo ordenado a medida que recorre la lista, insertando cada elemento en su posición correspondiente.
-    \item **Ordenación rápida (Quick Sort)**: Utiliza el enfoque de dividir y vencerás, seleccionando un pivote y organizando los elementos alrededor de él.
-    \item **Ordenación por mezcla (Merge Sort)**: También utiliza dividir y vencerás, dividiendo el arreglo en subarreglos más pequeños y luego fusionándolos de manera ordenada.
+    \item \textbf{Ordenación por burbuja (Bubble Sort):} Es simple pero ineficiente para listas grandes. Compara elementos adyacentes y los intercambia si están en el orden incorrecto.
+    \item \textbf{Ordenación por selección (Selection Sort):} Encuentra el mínimo (o máximo) de la lista y lo coloca en la posición correcta.
+    \item \textbf{Ordenación por inserción (Insertion Sort):} Construye el arreglo ordenado a medida que recorre la lista, insertando cada elemento en su posición correspondiente.
+    \item \textbf{Ordenación rápida (Quick Sort):} Utiliza el enfoque de dividir y vencerás, seleccionando un pivote y organizando los elementos alrededor de él.
+    \item \textbf{Ordenación por mezcla (Merge Sort):} También utiliza dividir y vencerás, dividiendo el arreglo en subarreglos más pequeños y luego fusionándolos de manera ordenada.
 \end{itemize}
 
 \section{Algoritmo de Ordenación por Burbuja (Bubble Sort)}
@@ -2018,9 +2008,12 @@ void burbuja(int arr[], int n) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El algoritmo realiza \texttt{n-1} pasadas sobre el arreglo.
+
 2. En cada pasada, compara los elementos adyacentes y los intercambia si están en el orden incorrecto.
+
 3. Al final de cada pasada, el elemento más grande se coloca en su posición correcta.
 
 \section{Ejemplo: Ordenación por Burbuja}
@@ -2048,8 +2041,11 @@ int main() {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+
+\textbf{\textit{EXPLICACION:}}
+
 1. El arreglo se ordena utilizando el algoritmo de burbuja.
+
 2. Después de la ordenación, el arreglo se imprime en orden ascendente.
 
 \section{Algoritmo de Ordenación por Selección (Selection Sort)}
@@ -2074,9 +2070,12 @@ void seleccion(int arr[], int n) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El algoritmo recorre la parte no ordenada del arreglo en cada iteración.
-2. Encuentra el elemento más pequeño y lo intercambia con el primer elemento no ordenado.
+
+2. Encuentra el elemento más pequeño y lo intercambia con el primer elemento    no ordenado.
+
 3. Repite este proceso hasta que todo el arreglo esté ordenado.
 
 \section{Ejemplo: Ordenación por Selección}
@@ -2104,8 +2103,10 @@ int main() {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El arreglo se ordena utilizando el algoritmo de selección.
+
 2. Después de la ordenación, el arreglo se imprime en orden ascendente.
 
 \section{Algoritmo de Ordenación por Inserción (Insertion Sort)}
@@ -2128,8 +2129,11 @@ void insercion(int arr[], int n) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
-1. Comienza desde el segundo elemento y lo compara con los elementos anteriores.
+\textbf{\textit{EXPLICACION:}}
+
+1. Comienza desde el segundo elemento y lo compara con los elementos 
+anteriores.
+
 2. Inserta el elemento en su posición correcta dentro de la parte ordenada del arreglo.
 
 \section{Ejemplo: Ordenación por Inserción}
@@ -2157,8 +2161,10 @@ int main() {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El arreglo se ordena utilizando el algoritmo de inserción.
+
 2. Después de la ordenación, el arreglo se imprime en orden ascendente.
 
 \section{Algoritmo de Ordenación Rápida (Quick Sort)}
@@ -2189,9 +2195,12 @@ void quickSort(int arr[], int bajo, int alto) {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El algoritmo selecciona un pivote.
+
 2. Luego divide el arreglo en dos partes, una con elementos menores que el pivote y otra con elementos mayores.
+
 3. Llama recursivamente a \texttt{quickSort} para ordenar ambas particiones.
 
 \section{Ejemplo: Ordenación Rápida}
@@ -2219,17 +2228,19 @@ int main() {
 \end{lstlisting}
 \end{tcolorbox}
 
-### Explicación:
+\textbf{\textit{EXPLICACION:}}
+
 1. El arreglo se ordena utilizando el algoritmo de ordenación rápida.
+
 2. Después de la ordenación, el arreglo se imprime en orden ascendente.
 
 \section{Resumen del Capítulo}
 En este capítulo, aprendimos sobre los diferentes algoritmos de ordenación y su implementación en C++. Los algoritmos cubiertos son:
 \begin{itemize}
-    \item **Ordenación por burbuja (Bubble Sort)**.
-    \item **Ordenación por selección (Selection Sort)**.
-    \item **Ordenación por inserción (Insertion Sort)**.
-    \item **Ordenación rápida (Quick Sort)**.
+    \item Ordenación por burbuja (Bubble Sort).
+    \item Ordenación por selección (Selection Sort).
+    \item Ordenación por inserción (Insertion Sort).
+    \item Ordenación rápida (Quick Sort).
 \end{itemize}
 
 Además, proporcionamos ejemplos prácticos para cada uno de ellos, mostrando cómo ordenar un arreglo de manera eficiente.
