@@ -1,0 +1,2613 @@
+\documentclass[12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{tcolorbox}
+\usepackage{titlesec}
+\usepackage{lipsum}
+\usepackage{hyperref}
+\usepackage{colortbl}
+
+\definecolor{celestito}{rgb}{0.88, 0.95, 1}
+
+% Encabezados bonitos
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+
+% Márgenes
+\usepackage[a4paper, margin=2.5cm]{geometry}
+
+% Configuración para capítulos
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\Huge\color{blue!70!black}}{}{0pt}{\Huge}
+  
+% Estilo para cuadros de código
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{codigo}[1][]{colback=celestito!10!white, colframe=blue!60!black,
+  fonttitle=\bfseries, title=#1}
+
+% Portada
+\begin{document}
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    {\Huge\bfseries Estructura de Datos en C++\par}
+    \vspace{1cm}
+    {\Large Guía para estudiantes que comienzan desde cero\par}
+    \vfill
+    {\large Autor: Flores Aycaya Blanca Beatriz \par}
+    {\large Año: 2025\par}
+    \vspace*{1cm}
+    \includegraphics[width=0.5\textwidth]{programming_image.jpg} % Imagen representativa
+\end{titlepage}
+
+% Índice interactivo
+\tableofcontents
+\newpage
+
+% ---------------------------
+% CAPÍTULO 1 – Introducción
+% ---------------------------
+\chapter{Introducción a la Programación en C++}
+\begin{flushright}
+\textit{“Programar es decirle a la computadora lo que quieres, de forma que ella entienda.”}
+\end{flushright}
+
+\section*{¿Qué es programar?}
+Programar es darle instrucciones a una computadora para que realice tareas. Es como enseñarle paso a paso cómo resolver un problema. La programación es esencial en casi todos los dispositivos que usamos hoy en día, desde teléfonos hasta computadoras y electrodomésticos inteligentes.
+
+\textbf{Definición:} La programación es el proceso mediante el cual se crean aplicaciones, software y sistemas operativos que permiten la interacción con dispositivos tecnológicos.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{imagenRobot.png}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{imagesDeRobot1.jpg}
+    \caption{Un robot programador siguiendo instrucciones.}
+    \label{fig:enter-label}
+\end{figure}
+\end{center}
+\textbf{Imagen:} Un robot programador siguiendo instrucciones.
+
+\section{¿Qué es C++?}
+C++ es un lenguaje de programación muy poderoso y utilizado en todo el mundo. Fue creado para ser rápido, flexible y permitir crear desde videojuegos hasta sistemas complejos.
+
+\subsection*{¿Por qué aprender C++?}
+\begin{itemize}
+\item Tiene una sintaxis clara y lógica.
+\item Se usa en robótica, videojuegos, apps y sistemas operativos.
+\item Te prepara para aprender otros lenguajes con facilidad.
+\item Es uno de los lenguajes más rápidos debido a su cercanía con el hardware.
+\end{itemize}
+
+\subsection*{Historia de C++}
+C++ fue creado por Bjarne Stroustrup en 1979 en los laboratorios Bell de AT&T. Se basó en el lenguaje C y añadió características de programación orientada a objetos, lo que le permitió manejar más fácilmente la complejidad de programas grandes.
+
+\section{Nuestro primer programa}
+\subsection*{Ejemplo: Hola Mundo}
+Este es el programa más clásico para comenzar:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Primer programa en C++]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hola mundo!";
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection*{Explicación del código}
+Este programa hace lo siguiente:
+\begin{itemize}
+\item \texttt{\#include <iostream>} – Incluye la librería estándar de entrada y salida.
+\item \texttt{int main()} – Es la función principal, donde comienza la ejecución del programa.
+\item \texttt{cout} – Imprime el texto "Hola mundo!" en la pantalla.
+\item \texttt{return 0;} – Termina el programa con un valor 0, indicando que se ejecutó correctamente.
+\end{itemize}
+
+\section{Entrada y salida de datos}
+Una de las primeras cosas que aprenderás en cualquier lenguaje de programación es cómo recibir datos de los usuarios y cómo mostrar resultados.
+
+\subsection*{Imprimir datos con \texttt{cout}}
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Mostrar texto]
+\begin{lstlisting}[language=C++]
+cout << "Bienvenidos a C++!";
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection*{Leer datos con \texttt{cin}}
+
+El comando \texttt{cin} permite recibir datos del usuario. A continuación, mostramos cómo leer el nombre de un usuario:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Leer el nombre del usuario]
+\begin{lstlisting}[language=C++]
+string nombre;
+cout << "¿Cómo te llamas? ";
+cin >> nombre;
+cout << "Hola, " << nombre;
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Definición de variables y tipos de datos}
+En C++, las variables son fundamentales para almacenar datos. Cada variable tiene un tipo, que determina qué tipo de datos puede almacenar.
+
+\subsection*{¿Qué es una variable?}
+Una variable es como una caja donde guardamos un dato. Cada variable tiene un \textbf{nombre}, un \textbf{tipo de dato} y un \textbf{valor}.
+
+\begin{minted}[bgcolor=celeste, fontsize=\small]{cpp}
+int edad = 15;
+\end{minted}
+
+Esto significa que estamos guardando el número \texttt{15} en una variable llamada \texttt{edad}, de tipo \texttt{int} (entero).
+
+\subsection*{Tipos de Datos en C++}
+
+En C++, algunos de los tipos de datos más comunes son:
+
+\begin{center}
+\rowcolors{1}{gray!10}{white}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Tipo} & \textbf{Descripción} & \textbf{Ejemplo} \\
+\hline
+\texttt{int} & Números enteros & \texttt{int edad = 15;} \\
+\texttt{float} & Números decimales & \texttt{float altura = 1.65;} \\
+\texttt{char} & Carácter único & \texttt{char letra = 'A';} \\
+\texttt{bool} & Verdadero o falso & \texttt{bool aprobado = true;} \\
+\texttt{string} & Texto (requiere \texttt{\#include <string>}) & \texttt{string nombre = "Ana";} \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Operadores en C++}
+Los operadores permiten realizar cálculos y manipulaciones sobre las variables. 
+
+\subsection*{Operadores Aritméticos}
+\begin{center}
+\rowcolors{1}{gray!10}{white}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{Operador} & \textbf{Función} & \textbf{Ejemplo} \\
+\hline
+\texttt{+} & Suma & \texttt{a + b} \\
+\texttt{-} & Resta & \texttt{a - b} \\
+\texttt{*} & Multiplicación & \texttt{a * b} \\
+\texttt{/} & División & \texttt{a / b} \\
+\texttt{\%} & Módulo (residuo) & \texttt{a \% b} \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection*{Ejemplo: Operaciones Aritméticas}
+```cpp
+int suma = 10 + 5;   // 15
+int residuo = 7 % 2; // 1
+\section*{Lo que aprendiste}
+\begin{itemize}
+\item Qué es una variable
+\item Tipos de datos más comunes
+\item Declaración e inicialización
+\item Uso de operadores aritméticos
+\item Cómo hacer un programa simple con datos personales
+\end{itemize}
+
+\begin{center}
+\textit{¡Ahora estás listo para trabajar con arreglos (arrays) en el siguiente capítulo!}
+\end{center}
+
+% Glosario
+\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+\begin{itemize}
+\item \textbf{Programar:} Proceso de crear instrucciones que una computadora puede entender y ejecutar.
+\item \textbf{Variable:} Espacio de memoria que guarda un valor de un tipo específico (ej. entero, cadena).
+\item \textbf{Sintaxis:} Conjunto de reglas que definen cómo se escriben correctamente las instrucciones en un lenguaje de programación.
+\item \textbf{Recursividad:} Técnica en la cual una función se llama a sí misma para resolver un problema dividiéndolo en subproblemas más pequeños.
+\end{itemize}
+
+% Solucionario
+\chapter*{Solucionario}
+\addcontentsline{toc}{chapter}{Solucionario}
+
+\section*{Actividad 1}
+\textbf{Enunciado:} Escribe un programa que pida tu nombre y edad, y calcule cuántos años tendrás en 5 años.
+
+\textbf{Solución:}
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    string nombre;
+    int edad;
+
+    cout << "¿Cuál es tu nombre? ";
+    cin >> nombre;
+
+    cout << "¿Cuántos años tienes? ";
+    cin >> edad;
+
+    cout << "Hola " << nombre << ", en 5 años tendrás " << edad + 5 << " años." << endl;
+
+    return 0;
+}
+
+\section*{Actividad 2}
+\textbf{Enunciado:} Crea un programa que calcule el promedio de 5 notas ingresadas por el usuario.
+
+\textbf{Solución:}
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    float notas[5];
+    float suma = 0;
+
+    for (int i = 0; i < 5; i++) {
+        cout << "Ingrese la nota #" << (i+1) << ": ";
+        cin >> notas[i];
+        suma += notas[i];
+    }
+    float promedio = suma / 5;
+    cout << "El promedio es: " << promedio << endl;
+    return 0;
+}
+\end{lstlisting}
+
+
+    float promedio = suma / 5.0;
+    cout << "El promedio es: " << promedio << endl;
+
+    return 0;
+}
+
+
+\end
+
+
+\chapter{Arrays}
+\section{¿Qué es un array?}
+Imagina que tienes que guardar las notas de 30 estudiantes. Podrías crear 30 variables como \texttt{nota1, nota2, nota3, ..., nota30}, pero eso sería una locura. En lugar de eso, podemos usar un \textbf{array}, que es como una fila de casillas donde puedes guardar muchos datos del mismo tipo bajo un solo nombre.
+
+\textbf{Un array es una estructura que permite almacenar varios datos del mismo tipo en una sola variable.} Cada dato se guarda en una posición llamada \textbf{índice}, que empieza desde cero.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{arrays_diagram.png} % Aquí agregamos un gráfico representando un array
+\end{center}
+\textbf{Imagen:} Representación gráfica de un array.
+
+\section{Sintaxis básica}
+La sintaxis para declarar un array es la siguiente:
+```cpp
+tipo nombreDelArray[tamaño];
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Ejemplo: Declaración de un array]
+\begin{lstlisting}[language=C++]
+int notas[5]; // Crea un array de 5 enteros
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea un array de 5 elementos de tipo \texttt{int}. Los elementos del array se numeran desde \texttt{notas[0]} hasta \texttt{notas[4]}.
+
+\section{Acceso a los elementos del array}
+Para acceder a los elementos de un array, simplemente usas el índice correspondiente. Recuerda que el índice comienza desde 0.
+
+notas[0] = 90; // Asigna 90 a la primera posición
+notas[1] = 85; // Asigna 85 a la segunda posición
+\begin{tcolorbox}[colback=green!10!white, colframe=green!60!black, title=Ejemplo: Acceso a los elementos de un array]
+\begin{lstlisting}[language=C++]
+int notas[5] = {90, 85, 78, 92, 88};
+cout << notas[0]; // Imprime 90
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Inicialización de un array}
+También puedes llenar un array desde el principio al declarar sus elementos.
+int edades[4] = {12, 15, 17, 14};
+Esto guarda 12 en \texttt{edades[0]}, 15 en \texttt{edades[1]}, y así sucesivamente.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Inicialización de un array]
+\begin{lstlisting}[language=C++]
+int edades[4] = {12, 15, 17, 14};
+\end{lstlisting}
+\end{tcolorbox}
+
+\section{Recorrer un array con bucles}
+Un ejemplo muy común de trabajo con arrays es recorrerlo para realizar alguna operación con cada uno de sus elementos.
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Recorrer un array con bucles]
+\begin{lstlisting}[language=C++]
+int numeros[3] = {5, 8, 12};
+
+for(int i = 0; i < 3; i++) {
+cout << "Elemento " << i << ": " << numeros[i] << endl;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código recorre el array \texttt{numeros} e imprime todos sus elementos. La salida será:
+Elemento 0: 5
+Elemento 1: 8
+Elemento 2: 12
+
+\section{Ejemplo completo: promedio de notas}
+Supongamos que tenemos un array con las notas de 5 estudiantes y queremos calcular el promedio.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!60!black, title=Ejemplo: Promedio de notas]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+int notas[5];
+int suma = 0;
+
+for(int i = 0; i < 5; i++) {
+    cout << "Ingrese la nota #" << (i+1) << ": ";
+    cin >> notas[i];
+    suma += notas[i];
+}
+
+float promedio = suma / 5.0;
+cout << "Promedio: " << promedio << endl;
+
+return 0;
+
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este programa pedirá al usuario que ingrese 5 notas y calculará el promedio de esas notas.
+
+\section{Actividad sugerida}
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Actividad]
+Declara un array de 10 enteros y pídele al usuario que ingrese valores. Luego, imprime todos los valores al revés.
+\end{tcolorbox}
+
+\section{Resumen visual}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{array_operations.png} % Gráfico que resume la declaración y uso de arrays
+\end{center}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen del capítulo]
+\begin{itemize}
+\item Un array guarda varios valores del mismo tipo.
+\item Cada valor se accede por un índice que comienza en 0.
+\item Podemos usar bucles para llenar o recorrer un array.
+\item Son muy útiles cuando trabajamos con listas de datos del mismo tipo.
+\end{itemize}
+\end{tcolorbox}
+\chapter{Pilas}
+
+\section{¿Qué es una Pila?}
+Una \textbf{pila (stack)} es una estructura de datos que sigue el principio \textbf{LIFO} (Last In, First Out), lo que significa que el último elemento en ser agregado es el primero en ser retirado. Es similar a una pila de libros: el último libro que pongas en la pila será el primero en ser retirado.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{stack_diagram.png} % Gráfico representando una pila
+\end{center}
+\textbf{Imagen:} Representación gráfica de una pila.
+
+\section{Operaciones básicas de una Pila}
+Las operaciones más comunes en una pila son:
+
+\begin{itemize}
+    \item \textbf{push:} Inserta un nuevo elemento en la cima de la pila.
+    \item \textbf{pop:} Elimina el elemento que está en la cima de la pila.
+    \item \textbf{top:} Muestra el valor del elemento en la cima sin eliminarlo.
+    \item \textbf{empty:} Verifica si la pila está vacía.
+\end{itemize}
+
+\section{Implementación de una Pila con Arreglos}
+
+En C++, podemos implementar una pila utilizando arreglos. Aquí tienes la estructura básica para crear una pila con un array.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Pila con Arreglos]
+\begin{lstlisting}[language=C++]
+#define MAX 100
+
+struct Pila {
+    int datos[MAX];
+    int tope;
+
+    Pila() {
+        tope = -1; // Pila vacía
+    }
+
+    bool estaVacia() {
+        return tope == -1;
+    }
+
+    bool estaLlena() {
+        return tope == MAX - 1;
+    }
+
+    void push(int valor) {
+        if (estaLlena()) {
+            cout << "La pila está llena." << endl;
+        } else {
+            datos[++tope] = valor;
+        }
+    }
+
+    int pop() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1; // Pila vacía
+        } else {
+            return datos[tope--];
+        }
+    }
+
+    int top() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1;
+        } else {
+            return datos[tope];
+        }
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código define una pila utilizando un arreglo de tamaño fijo \texttt{MAX}. La pila tiene un índice \texttt{tope} que apunta al último elemento insertado. Las funciones básicas son \texttt{push}, \texttt{pop} y \texttt{top}.
+
+\section{Ejemplo: Uso de la Pila}
+A continuación, mostramos cómo usar esta estructura de pila:
+
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Ejemplo: Usar la Pila]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    Pila pila;
+
+    pila.push(10);
+    pila.push(20);
+    pila.push(30);
+
+    cout << "Elemento en la cima: " << pila.top() << endl;
+
+    cout << "Elemento retirado: " << pila.pop() << endl;
+    cout << "Elemento retirado: " << pila.pop() << endl;
+
+    cout << "Elemento en la cima después de retirar: "
+    << pila.top() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una pila, inserta tres elementos, y luego los va retirando uno por uno, mostrando la cima de la pila antes y después de cada operación.
+
+\section{Implementación de una Pila con Listas Enlazadas}
+Si no conocemos de antemano el tamaño de la pila, podemos implementar una pila utilizando listas enlazadas, lo que nos permite añadir y quitar elementos de forma dinámica.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Pila con Listas Enlazadas]
+\begin{lstlisting}[language=C++]
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+class Pila {
+private:
+    Nodo* cima;
+
+public:
+    Pila() {
+        cima = nullptr;
+    }
+
+    bool estaVacia() {
+        return cima == nullptr;
+    }
+
+    void push(int valor) {
+        Nodo* nuevoNodo = new Nodo();
+        nuevoNodo->dato = valor;
+        nuevoNodo->siguiente = cima;
+        cima = nuevoNodo;
+    }
+
+    int pop() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1;
+        } else {
+            Nodo* temp = cima;
+            int valor = cima->dato;
+            cima = cima->siguiente;
+            delete temp;
+            return valor;
+        }
+    }
+
+    int top() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1;
+        } else {
+            return cima->dato;
+        }
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Esta implementación usa una lista enlazada donde cada nodo guarda un valor y una referencia al siguiente nodo. La \texttt{cima} de la pila es el primer nodo de la lista.
+
+\section{Ejemplo: Uso de la Pila con Listas Enlazadas}
+A continuación, mostramos cómo usar la pila implementada con listas enlazadas:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Pila con Listas Enlazadas]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    Pila pila;
+
+    pila.push(10);
+    pila.push(20);
+    pila.push(30);
+
+    cout << "Elemento en la cima: " << pila.top() << endl;
+
+    cout << "Elemento retirado: " << pila.pop() << endl;
+    cout << "Elemento retirado: " << pila.pop() << endl;
+
+    cout << "Elemento en la cima después de retirar: " 
+    << pila.top() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código es similar al ejemplo anterior, pero ahora la pila se maneja mediante una lista enlazada, lo que permite que los elementos se agreguen y se eliminen de manera dinámica sin límite de tamaño.
+
+\section{Aplicaciones de las Pilas}
+Las pilas tienen muchas aplicaciones en programación, especialmente en problemas que requieren que se almacenen y procesen datos en un orden específico, como el procesamiento de expresiones matemáticas y la reversión de secuencias.
+
+\subsection{Ejemplo: Evaluación de Expresiones}
+Uno de los usos más comunes de las pilas es en la evaluación de expresiones aritméticas en notación postfija.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Evaluación de Expresión Postfija]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int evaluarPostfija(string exp) {
+    stack<int> pila;
+
+    for (char c : exp) {
+        if (isdigit(c)) {
+            pila.push(c - '0');
+        } else {
+            int b = pila.top(); pila.pop();
+            int a = pila.top(); pila.pop();
+            if (c == '+') pila.push(a + b);
+            if (c == '-') pila.push(a - b);
+            if (c == '*') pila.push(a * b);
+            if (c == '/') pila.push(a / b);
+        }
+    }
+    return pila.top();
+}
+
+int main() {
+    string exp = "23+5*";
+    cout << "Resultado: " << evaluarPostfija(exp) << endl;
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código evalúa una expresión postfija como "23+5*" y devuelve el resultado. La pila almacena los operandos mientras procesa los operadores.
+
+\section{Actividad sugerida}
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Actividad]
+Escribe un programa que simule el uso de una pila en un sistema de navegación de páginas web. Cada vez que se navega a una nueva página, se agrega a la pila. Al presionar "Atrás", se elimina la página más reciente de la pila y se regresa a la página anterior.
+\end{tcolorbox}
+
+\section{Resumen visual}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{stack_operations_summary.png} % Gráfico resumen de las operaciones de pila
+\end{center}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen del capítulo]
+\begin{itemize}
+    \item Una pila sigue el principio LIFO.
+    \item Las operaciones principales son \texttt{push}, \texttt{pop}, \texttt{top}, y \texttt{empty}.
+    \item Las pilas pueden implementarse con arreglos o listas enlazadas.
+    \item Son útiles para la evaluación de expresiones y el control de flujo de programas.
+\end{itemize}
+\end{tcolorbox}
+\chapter{Listas Enlazadas}
+
+\section{¿Qué es una lista enlazada?}
+Una lista enlazada es una estructura de datos lineal en la que cada elemento (llamado \textbf{nodo}) contiene dos partes:
+\begin{itemize}
+    \item Un \textbf{dato} (por ejemplo, un número o una palabra).
+    \item Un \textbf{puntero} que apunta al \textbf{siguiente nodo} en la lista.
+\end{itemize}
+
+La principal ventaja de las listas enlazadas sobre los arreglos es que no es necesario conocer de antemano el tamaño de la lista, ya que se pueden ir añadiendo elementos de manera dinámica.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{linked_list_diagram.png} % Gráfico representando una lista enlazada
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una lista enlazada.
+
+\section{Estructura de un Nodo}
+Un nodo en una lista enlazada generalmente tiene dos partes:
+\begin{itemize}
+    \item \textbf{dato:} La información que almacena el nodo.
+    \item \textbf{siguiente:} Un puntero que apunta al siguiente nodo en la lista.
+\end{itemize}
+
+La estructura de un nodo en C++ puede definirse como:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Nodo de una Lista Enlazada]
+\begin{lstlisting}[language=C++]
+struct Nodo {
+    int dato;          // Almacena la información
+    Nodo* siguiente;   // Apunta al siguiente nodo
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+El puntero \texttt{siguiente} es lo que enlaza un nodo con el siguiente en la lista.
+
+\section{¿Por qué usar listas enlazadas?}
+Las listas enlazadas son útiles cuando:
+\begin{itemize}
+    \item No conocemos de antemano el número de elementos que tendremos.
+    \item Queremos insertar o eliminar elementos de manera eficiente en cualquier parte de la lista sin mover otros elementos.
+    \item Necesitamos una estructura dinámica y flexible.
+\end{itemize}
+
+\section{Tipos de Listas Enlazadas}
+Existen varios tipos de listas enlazadas:
+\begin{itemize}
+    \item \textbf{Lista enlazada simple:} Cada nodo apunta al siguiente nodo.
+    \item \textbf{Lista doblemente enlazada:} Cada nodo tiene dos punteros, uno al siguiente nodo y otro al nodo anterior.
+    \item \textbf{Lista circular:} El último nodo apunta al primer nodo, formando un ciclo.
+\end{itemize}
+
+\section{Implementación de una Lista Enlazada Simple}
+En C++, podemos crear una lista enlazada simple con la siguiente estructura:
+
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Ejemplo: Lista Enlazada Simple]
+\begin{lstlisting}[language=C++]
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+
+class ListaEnlazada {
+private:
+    Nodo* cabeza;
+
+public:
+    ListaEnlazada() {
+        cabeza = nullptr;  // Lista vacía al inicio
+    }
+
+    bool estaVacia() {
+        return cabeza == nullptr;
+    }
+
+    void insertarAlPrincipio(int valor) {
+        Nodo* nuevoNodo = new Nodo();
+        nuevoNodo->dato = valor;
+        nuevoNodo->siguiente = cabeza;
+        cabeza = nuevoNodo;
+    }
+
+    void mostrar() {
+        Nodo* actual = cabeza;
+        while (actual != nullptr) {
+            cout << actual->dato << " -> ";
+            actual = actual->siguiente;
+        }
+        cout << "NULL" << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código define una lista enlazada donde cada nodo contiene un valor y un puntero al siguiente nodo. La función \texttt{insertarAlPrincipio} inserta un nodo al principio de la lista.
+
+\section{Ejemplo: Uso de una Lista Enlazada}
+Ahora vamos a ver cómo usar la lista enlazada que acabamos de implementar.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Uso de la Lista Enlazada]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ListaEnlazada lista;
+
+    lista.insertarAlPrincipio(10);
+    lista.insertarAlPrincipio(20);
+    lista.insertarAlPrincipio(30);
+
+    cout << "Lista enlazada: ";
+    lista.mostrar();  // Muestra la lista
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una lista enlazada, inserta tres elementos al principio y luego muestra la lista.
+
+\section{Lista Doblemente Enlazada}
+En una lista doblemente enlazada, cada nodo tiene dos punteros: uno que apunta al siguiente nodo y otro que apunta al nodo anterior.
+
+La estructura de un nodo en una lista doblemente enlazada es la siguiente:
+
+\begin{tcolorbox}[colback=green!10!white, colframe=green!60!black, title=Ejemplo: Nodo Doblemente Enlazado]
+\begin{lstlisting}[language=C++]
+struct NodoDoble {
+    int dato;
+    NodoDoble* siguiente;
+    NodoDoble* anterior;
+};
+
+class ListaDoble {
+private:
+    NodoDoble* cabeza;
+    NodoDoble* cola;
+
+public:
+    ListaDoble() {
+        cabeza = nullptr;
+        cola = nullptr;
+    }
+
+    void insertarAlFinal(int valor) {
+        NodoDoble* nuevoNodo = new NodoDoble();
+        nuevoNodo->dato = valor;
+        nuevoNodo->siguiente = nullptr;
+        nuevoNodo->anterior = cola;
+
+        if (cola != nullptr) {
+            cola->siguiente = nuevoNodo;
+        }
+        cola = nuevoNodo;
+
+        if (cabeza == nullptr) {
+            cabeza = nuevoNodo;
+        }
+    }
+
+    void mostrar() {
+        NodoDoble* actual = cabeza;
+        while (actual != nullptr) {
+            cout << actual->dato << " <-> ";
+            actual = actual->siguiente;
+        }
+        cout << "NULL" << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una lista doblemente enlazada, donde los nodos tienen punteros tanto al siguiente nodo como al nodo anterior.
+
+\section{Ejemplo: Uso de la Lista Doblemente Enlazada}
+Ahora vamos a ver cómo utilizar la lista doblemente enlazada para insertar elementos al final de la lista y mostrarla:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Uso de la Lista Doblemente Enlazada]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ListaDoble lista;
+
+    lista.insertarAlFinal(10);
+    lista.insertarAlFinal(20);
+    lista.insertarAlFinal(30);
+
+    cout << "Lista doblemente enlazada: ";
+    lista.mostrar();  // Muestra la lista
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una lista doblemente enlazada, inserta tres elementos al final y luego muestra la lista.
+
+\section{Lista Circular}
+Una lista circular es una lista en la que el último nodo apunta al primer nodo, formando un ciclo.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{circular_list.png} % Imagen representando una lista circular
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una lista circular.
+
+En una lista circular, tanto el primer como el último nodo están enlazados, lo que permite recorrer la lista sin necesidad de saber el tamaño de la misma.
+
+\section{Actividad sugerida}
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Actividad]
+Crea una lista enlazada circular que almacene los nombres de tus amigos. Implementa una función para agregar un nombre al final de la lista y otra para recorrerla e imprimir todos los nombres.
+\end{tcolorbox}
+
+\section{Resumen visual}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{linked_list_summary.png} % Gráfico resumen de las listas enlazadas
+\end{center}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen del capítulo]
+\begin{itemize}
+    \item Una lista enlazada es una estructura de datos donde cada nodo apunta al siguiente.
+    \item Las listas enlazadas pueden ser simples, dobles o circulares.
+    \item Las listas dobles permiten recorrerla en ambas direcciones, y las listas circulares permiten recorrerla de manera infinita.
+    \item Son útiles cuando necesitamos una estructura dinámica de tamaño variable.
+\end{itemize}
+\end{tcolorbox}
+\chapter{Listas Doblemente Enlazadas y Circulares}
+
+\section{¿Qué es una lista doblemente enlazada?}
+Una lista doblemente enlazada es una variación de la lista enlazada en la que cada nodo tiene dos punteros:
+\begin{itemize}
+    \item Un puntero al siguiente nodo.
+    \item Un puntero al nodo anterior.
+\end{itemize}
+
+Esto permite recorrer la lista tanto hacia adelante como hacia atrás, lo que proporciona una mayor flexibilidad en algunas operaciones.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{doubly_linked_list.png} % Gráfico representando una lista doblemente enlazada
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una lista doblemente enlazada.
+
+\section{Ventajas de las listas doblemente enlazadas}
+Las listas doblemente enlazadas tienen varias ventajas sobre las listas simples:
+\begin{itemize}
+    \item Permiten recorrer la lista en ambas direcciones.
+    \item Son útiles para operaciones de inserción y eliminación de nodos en cualquier parte de la lista, sin necesidad de recorrerla desde el principio.
+    \item Son especialmente útiles en estructuras como \textit{colas de doble entrada}, donde se necesita manipular los elementos desde ambos extremos.
+\end{itemize}
+
+\section{Estructura de un Nodo en una Lista Doblemente Enlazada}
+El nodo de una lista doblemente enlazada tiene tres componentes:
+\begin{itemize}
+    \item \textbf{dato:} Almacena la información del nodo.
+    \item \textbf{siguiente:} Apunta al siguiente nodo en la lista.
+    \item \textbf{anterior:} Apunta al nodo anterior en la lista.
+\end{itemize}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Ejemplo: Nodo en una Lista Doblemente Enlazada]
+\begin{lstlisting}[language=C++]
+struct NodoDoble {
+    int dato;
+    NodoDoble* siguiente;
+    NodoDoble* anterior;
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+En este ejemplo, cada nodo contiene un puntero tanto hacia el siguiente nodo (\texttt{siguiente}) como hacia el nodo anterior (\texttt{anterior}).
+
+\section{Implementación de una Lista Doblemente Enlazada}
+En una lista doblemente enlazada, cada nodo está conectado tanto con el nodo anterior como con el siguiente. Aquí tenemos un ejemplo de cómo implementarlo en C++:
+
+\begin{tcolorbox}[colback=green!10!white, colframe=green!60!black, title=Ejemplo: Lista Doblemente Enlazada]
+\begin{lstlisting}[language=C++]
+class ListaDoble {
+private:
+    NodoDoble* cabeza;
+    NodoDoble* cola;
+
+public:
+    ListaDoble() {
+        cabeza = nullptr;
+        cola = nullptr;
+    }
+
+    // Inserta al final
+    void insertarAlFinal(int valor) {
+        NodoDoble* nuevoNodo = new NodoDoble();
+        nuevoNodo->dato = valor;
+        nuevoNodo->siguiente = nullptr;
+        nuevoNodo->anterior = cola;
+
+        if (cola != nullptr) {
+            cola->siguiente = nuevoNodo;
+        }
+        cola = nuevoNodo;
+
+        if (cabeza == nullptr) {
+            cabeza = nuevoNodo;
+        }
+    }
+
+    // Muestra la lista de cabeza a cola
+    void mostrar() {
+        NodoDoble* actual = cabeza;
+        while (actual != nullptr) {
+            cout << actual->dato << " <-> ";
+            actual = actual->siguiente;
+        }
+        cout << "NULL" << endl;
+    }
+
+    // Muestra la lista de cola a cabeza
+    void mostrarReversa() {
+        NodoDoble* actual = cola;
+        while (actual != nullptr) {
+            cout << actual->dato << " <-> ";
+            actual = actual->anterior;
+        }
+        cout << "NULL" << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código implementa una lista doblemente enlazada con las funciones básicas de inserción al final y recorrido en ambas direcciones.
+
+\section{Ejemplo: Uso de una Lista Doblemente Enlazada}
+A continuación, vemos cómo usar la lista doblemente enlazada para insertar elementos al final y recorrerla de ambas maneras (de cabeza a cola y de cola a cabeza):
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Uso de la Lista Doblemente Enlazada]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ListaDoble lista;
+
+    lista.insertarAlFinal(10);
+    lista.insertarAlFinal(20);
+    lista.insertarAlFinal(30);
+
+    cout << "Lista de cabeza a cola: ";
+    lista.mostrar();  // Muestra la lista de cabeza a cola
+
+    cout << "Lista de cola a cabeza: ";
+    lista.mostrarReversa();  // Muestra la lista de cola a cabeza
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código inserta tres elementos en la lista doblemente enlazada y luego muestra la lista de dos maneras: de cabeza a cola y de cola a cabeza.
+
+\section{¿Qué es una lista circular?}
+Una lista circular es una variación de las listas enlazadas, donde el último nodo apunta al primer nodo, formando un ciclo continuo. Esto permite recorrer la lista de manera infinita sin necesidad de saber el tamaño de la lista.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{circular_linked_list.png} % Gráfico representando una lista circular
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una lista circular.
+
+En una lista circular, el último nodo tiene un puntero que apunta de nuevo al primer nodo, formando un ciclo.
+
+\section{Implementación de una Lista Circular}
+A continuación, veremos cómo implementar una lista circular en C++.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Lista Circular]
+\begin{lstlisting}[language=C++]
+class ListaCircular {
+private:
+    NodoDoble* cabeza;
+    NodoDoble* cola;
+
+public:
+    ListaCircular() {
+        cabeza = nullptr;
+        cola = nullptr;
+    }
+
+    // Inserta al final y conecta la cola con la cabeza
+    void insertarAlFinal(int valor) {
+        NodoDoble* nuevoNodo = new NodoDoble();
+        nuevoNodo->dato = valor;
+        nuevoNodo->siguiente = cabeza;
+        nuevoNodo->anterior = cola;
+
+        if (cabeza != nullptr) {
+            cola->siguiente = nuevoNodo;
+        }
+        cola = nuevoNodo;
+
+        if (cabeza == nullptr) {
+            cabeza = nuevoNodo;
+        }
+        cabeza->anterior = cola; // La cabeza apunta a la cola
+    }
+
+    // Muestra la lista circular
+    void mostrar() {
+        if (cabeza == nullptr) return;
+
+        NodoDoble* actual = cabeza;
+        do {
+            cout << actual->dato << " <-> ";
+            actual = actual->siguiente;
+        } while (actual != cabeza);
+        cout << "NULL" << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código implementa una lista circular donde el último nodo apunta de nuevo al primer nodo, formando un ciclo.
+
+\section{Ejemplo: Uso de la Lista Circular}
+A continuación, vemos cómo usar la lista circular para insertar elementos y recorrerla:
+
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Ejemplo: Uso de la Lista Circular]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ListaCircular lista;
+
+    lista.insertarAlFinal(10);
+    lista.insertarAlFinal(20);
+    lista.insertarAlFinal(30);
+
+    cout << "Lista circular: ";
+    lista.mostrar();  // Muestra la lista circular
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una lista circular, inserta tres elementos y muestra la lista circular.
+
+\section{Aplicaciones de las Listas Doblemente Enlazadas y Circulares}
+Las listas doblemente enlazadas y circulares tienen varias aplicaciones en la programación:
+\begin{itemize}
+    \item **Navegadores web**: Usan listas doblemente enlazadas para almacenar el historial de páginas, permitiendo navegar hacia adelante y hacia atrás.
+    \item **Sistemas de mensajería**: Los mensajes pueden ser procesados en una lista circular, donde el último mensaje siempre apunta al primero.
+    \item **Memoria dinámica**: Las listas circulares son útiles para la administración de memoria en sistemas operativos.
+\end{itemize}
+
+\section{Actividad sugerida}
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Actividad]
+Crea una lista circular que almacene los nombres de tus compañeros de clase. Implementa una función para agregar un nombre al final de la lista y otra para recorrerla e imprimir todos los nombres.
+\end{tcolorbox}
+
+\section{Resumen visual}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{list_types_summary.png} % Gráfico resumen de los tipos de listas
+\end{center}
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen del capítulo]
+\begin{itemize}
+    \item Las listas doblemente enlazadas permiten recorrer la lista en ambas direcciones.
+    \item Las listas circulares permiten recorrer la lista infinitamente, ya que el último nodo apunta al primero.
+    \item Son útiles cuando necesitamos una estructura dinámica y flexible.
+\end{itemize}
+\end{tcolorbox}
+
+
+
+\chapter{Colas}
+
+\section{¿Qué es una Cola?}
+Una \textbf{cola (queue)} es una estructura de datos lineal que sigue el principio \textbf{FIFO} (First In, First Out), lo que significa que el primer elemento en entrar es el primero en salir. Es como una fila en una tienda: el primer cliente que llega es el primero que es atendido.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{queue_diagram.png} % Gráfico representando una cola
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una cola.
+
+\section{Operaciones Básicas de una Cola}
+Las operaciones más comunes en una cola son:
+
+\begin{itemize}
+    \item \textbf{enqueue:} Agrega un nuevo elemento al final de la cola.
+    \item \textbf{dequeue:} Elimina el elemento del frente de la cola.
+    \item \textbf{front:} Muestra el valor al frente de la cola sin eliminarlo.
+    \item \textbf{empty:} Verifica si la cola está vacía.
+\end{itemize}
+
+\section{Implementación de una Cola con Arreglos}
+En C++, podemos implementar una cola utilizando un arreglo. Aquí tienes la estructura básica para crear una cola con un array.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola con Arreglos]
+\begin{lstlisting}[language=C++]
+#define MAX 100
+
+class Cola {
+private:
+    int cola[MAX];
+    int frente, fin;
+
+public:
+    Cola() {
+        frente = -1;
+        fin = -1;
+    }
+
+    bool estaVacia() {
+        return frente == -1;
+    }
+
+    bool estaLlena() {
+        return fin == MAX - 1;
+    }
+
+    void enqueue(int valor) {
+        if (estaLlena()) {
+            cout << "La cola está llena." << endl;
+        } else {
+            if (frente == -1) frente = 0;
+            cola[++fin] = valor;
+        }
+    }
+
+    int dequeue() {
+        if (estaVacia()) {
+            cout << "La cola está vacía." << endl;
+            return -1;
+        } else {
+            int valor = cola[frente];
+            if (frente >= fin) {
+                frente = fin = -1; // Cola vacía
+            } else {
+                frente++;
+            }
+            return valor;
+        }
+    }
+
+    int front() {
+        if (estaVacia()) {
+            cout << "La cola está vacía." << endl;
+            return -1;
+        } else {
+            return cola[frente];
+        }
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código implementa una cola con un arreglo. Las funciones básicas de la cola son \texttt{enqueue}, \texttt{dequeue}, y \texttt{front}.
+
+\section{Ejemplo: Uso de una Cola}
+A continuación, mostramos cómo usar esta cola para agregar y eliminar elementos:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Cola]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    Cola cola;
+
+    cola.enqueue(10);
+    cola.enqueue(20);
+    cola.enqueue(30);
+
+    cout << "Elemento al frente: " << cola.front() << endl;
+
+    cout << "Elemento retirado: " << cola.dequeue() << endl;
+    cout << "Elemento retirado: " << cola.dequeue() << endl;
+
+    cout << "Elemento al frente después de eliminar: " << cola.front() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una cola, inserta tres elementos, y luego los va eliminando uno por uno, mostrando el frente de la cola antes y después de cada operación.
+
+\section{Cola Circular}
+En una \textbf{cola circular}, el primer espacio vacío de la cola se reutiliza cuando se eliminan elementos. Esto permite usar el espacio de manera más eficiente.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{circular_queue.png} % Gráfico representando una cola circular
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una cola circular.
+
+En una cola circular, el último nodo apunta al primero, formando un ciclo. Esto es útil cuando la cola se utiliza de manera continua y no se desperdicia espacio en el arreglo.
+
+\section{Implementación de una Cola Circular}
+La implementación de una cola circular en C++ es similar a una cola normal, pero con el agregado de la reutilización de espacios.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola Circular]
+\begin{lstlisting}[language=C++]
+class ColaCircular {
+private:
+    int cola[MAX];
+    int frente, fin;
+
+public:
+    ColaCircular() {
+        frente = -1;
+        fin = -1;
+    }
+
+    bool estaVacia() {
+        return frente == -1;
+    }
+
+    bool estaLlena() {
+        return (fin + 1) % MAX == frente;
+    }
+
+    void enqueue(int valor) {
+        if (estaLlena()) {
+            cout << "La cola circular está llena." << endl;
+        } else {
+            if (frente == -1) frente = 0;
+            fin = (fin + 1) % MAX;
+            cola[fin] = valor;
+        }
+    }
+
+    int dequeue() {
+        if (estaVacia()) {
+            cout << "La cola circular está vacía." << endl;
+            return -1;
+        } else {
+            int valor = cola[frente];
+            if (frente == fin) {
+                frente = fin = -1; // Cola vacía
+            } else {
+                frente = (frente + 1) % MAX;
+            }
+            return valor;
+        }
+    }
+
+    int front() {
+        if (estaVacia()) {
+            cout << "La cola circular está vacía." << endl;
+            return -1;
+        } else {
+            return cola[frente];
+        }
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código implementa una cola circular, utilizando el operador módulo (\%) para asegurarse de que el puntero al final de la cola vuelva al principio cuando se elimina un elemento.
+
+\section{Ejemplo: Uso de una Cola Circular}
+A continuación, vemos cómo utilizar la cola circular para agregar y eliminar elementos de manera continua:
+
+\begin{tcolorbox}[colback=yellow!5!white, colframe=yellow!80!black, title=Ejemplo: Uso de la Cola Circular]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    ColaCircular cola;
+
+    cola.enqueue(10);
+    cola.enqueue(20);
+    cola.enqueue(30);
+
+    cout << "Elemento al frente: " << cola.front() << endl;
+
+    cout << "Elemento retirado: " << cola.dequeue() << endl;
+    cout << "Elemento retirado: " << cola.dequeue() << endl;
+
+    cola.enqueue(40);  // Reutiliza el espacio vacío
+    cout << "Elemento al frente después de agregar 40: " << cola.front() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una cola circular, inserta y elimina elementos, y muestra cómo se reutiliza el espacio vacío cuando se eliminan elementos.
+
+\section{Ejemplos prácticos de uso de Colas}
+Las colas son estructuras muy útiles y se utilizan ampliamente en la programación. A continuación, se presentan tres ejemplos prácticos de su uso:
+
+\subsection{1. Simulación de Atención al Cliente}
+Una aplicación común de las colas es en los sistemas de atención al cliente, donde los clientes esperan su turno para ser atendidos. Aquí, los clientes se agregan a la cola y se atienden en el orden en el que llegaron.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola de Atención al Cliente]
+\begin{lstlisting}[language=C++]
+struct Cliente {
+    int id;
+    string nombre;
+};
+
+class ColaClientes {
+private:
+    Cliente cola[MAX];
+    int frente, fin;
+
+public:
+    ColaClientes() {
+        frente = -1;
+        fin = -1;
+    }
+
+    void agregarCliente(int id, string nombre) {
+        if (fin == MAX - 1) {
+            cout << "No hay más espacio en la cola." << endl;
+            return;
+        }
+        if (frente == -1) frente = 0;
+        cola[++fin] = {id, nombre};
+    }
+
+    void atenderCliente() {
+        if (frente == -1) {
+            cout << "No hay clientes en la cola." << endl;
+            return;
+        }
+        cout << "Atendiendo a " << cola[frente].nombre << endl;
+        if (frente == fin) frente = fin = -1;  // Cola vacía
+        else frente++;
+    }
+
+    void mostrarCola() {
+        if (frente == -1) {
+            cout << "No hay clientes." << endl;
+            return;
+        }
+        for (int i = frente; i <= fin; i++) {
+            cout << cola[i].nombre << " (ID: " << cola[i].id << ") <- ";
+        }
+        cout << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection{2. Cola para Procesamiento de Tareas en un Sistema Operativo}
+En sistemas operativos, las colas se utilizan para gestionar las tareas que están a la espera de ser procesadas. El sistema toma la primera tarea en la cola y la procesa.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola de Tareas]
+\begin{lstlisting}[language=C++]
+struct Tarea {
+    string descripcion;
+    int prioridad;
+};
+
+class ColaTareas {
+private:
+    Tarea cola[MAX];
+    int frente, fin;
+
+public:
+    ColaTareas() {
+        frente = -1;
+        fin = -1;
+    }
+
+    void agregarTarea(string descripcion, int prioridad) {
+        if (fin == MAX - 1) {
+            cout << "La cola de tareas está llena." 
+            << endl;
+            return;
+        }
+        if (frente == -1) frente = 0;
+        cola[++fin] = {descripcion, prioridad};
+    }
+
+    void procesarTarea() {
+        if (frente == -1) {
+            cout << "No hay tareas para procesar." << endl;
+            return;
+        }
+        cout << "Procesando tarea: " << cola[frente].descripcion 
+        << endl;
+        if (frente == fin) frente = fin = -1;  // Cola vacía
+        else frente++;
+    }
+
+    void mostrarCola() {
+        if (frente == -1) {
+            cout << "No hay tareas pendientes." << endl;
+            return;
+        }
+        for (int i = frente; i <= fin; i++) {
+            cout << cola[i].descripcion << " (Prioridad: " 
+            << cola[i].prioridad << ") <- ";
+        }
+        cout << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+\subsection{3. Cola de Impresión en una Oficina}
+Un ejemplo más es el manejo de trabajos de impresión en una oficina. Los trabajos de impresión se agregan a la cola y se imprimen en el orden en que llegan.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Cola de Impresión]
+\begin{lstlisting}[language=C++]
+struct TrabajoImpresion {
+    string documento;
+    int paginas;
+};
+
+class ColaImpresion {
+private:
+    TrabajoImpresion cola[MAX];
+    int frente, fin;
+
+public:
+    ColaImpresion() {
+        frente = -1;
+        fin = -1;
+    }
+
+    void agregarTrabajo(string documento, int paginas) {
+        if (fin == MAX - 1) {
+            cout << "La cola de impresión está llena." 
+            << endl;
+            return;
+        }
+        if (frente == -1) frente = 0;
+        cola[++fin] = {documento, paginas};
+    }
+
+    void procesarTrabajo() {
+        if (frente == -1) {
+            cout << "No hay trabajos en la cola."
+            << endl;
+            return;
+        }
+        cout << "Imprimiendo: " <<
+        cola[frente].documento << " (" << cola[frente].paginas << 
+        " páginas)" << endl;
+        if (frente == fin) frente = fin = -1;  // Cola vacía
+        else frente++;
+    }
+
+    void mostrarCola() {
+        if (frente == -1) {
+            cout << "No hay trabajos pendientes." << endl;
+            return;
+        }
+        for (int i = frente; i <= fin; i++) {
+            cout << cola[i].documento << " ("
+            << cola[i].paginas 
+            << " páginas) <- ";
+        }
+        cout << endl;
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+
+\chapter{Pilas}
+
+\section{¿Qué es una Pila?}
+Una \textbf{pila (stack)} es una estructura de datos que sigue el principio \textbf{LIFO} (Last In, First Out), lo que significa que el último elemento en entrar es el primero en salir. Es como una pila de platos: el último plato que pongas en la pila será el primero en ser retirado.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{stack_example.png} % Gráfico representando una pila
+\end{center}
+
+\textbf{Imagen:} Representación gráfica de una pila.
+
+\section{Operaciones Básicas de una Pila}
+Las pilas se caracterizan por las siguientes operaciones:
+
+\begin{itemize}
+    \item \textbf{push:} Inserta un nuevo elemento en la cima de la pila.
+    \item \textbf{pop:} Elimina el elemento en la cima de la pila.
+    \item \textbf{top:} Muestra el valor del elemento en la cima sin eliminarlo.
+    \item \textbf{empty:} Verifica si la pila está vacía.
+\end{itemize}
+
+\section{Implementación de una Pila con Arreglos}
+En C++, podemos implementar una pila utilizando arreglos. Aquí tienes la estructura básica para crear una pila con un arreglo:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Pila con Arreglos]
+\begin{lstlisting}[language=C++]
+#define MAX 100
+
+class Pila {
+private:
+    int pila[MAX];
+    int cima;
+
+public:
+    Pila() {
+        cima = -1; // La pila está vacía
+    }
+
+    bool estaVacia() {
+        return cima == -1;
+    }
+
+    bool estaLlena() {
+        return cima == MAX - 1;
+    }
+
+    void push(int valor) {
+        if (estaLlena()) {
+            cout << "La pila está llena." << endl;
+        } else {
+            pila[++cima] = valor;
+        }
+    }
+
+    int pop() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1; // Indica que la pila está vacía
+        } else {
+            return pila[cima--];
+        }
+    }
+
+    int top() {
+        if (estaVacia()) {
+            cout << "La pila está vacía." << endl;
+            return -1; // Indica que la pila está vacía
+        } else {
+            return pila[cima];
+        }
+    }
+};
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código define una pila con un arreglo de tamaño \texttt{MAX}. La pila tiene un índice \texttt{cima} que apunta al último elemento insertado. Las funciones básicas de la pila son \texttt{push}, \texttt{pop}, y \texttt{top}.
+
+\section{Ejemplo: Uso de una Pila}
+A continuación, mostramos cómo usar esta pila para insertar y eliminar elementos:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Pila]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    Pila pila;
+
+    pila.push(10);
+    pila.push(20);
+    pila.push(30);
+
+    cout << "Elemento en la cima: " << pila.top() << endl;
+
+    cout << "Elemento retirado: " << pila.pop() << endl;
+    cout << "Elemento retirado: " << pila.pop() << endl;
+
+    cout << "Elemento en la cima después de retirar:
+    " << pila.top() << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código crea una pila, inserta tres elementos y luego los elimina uno por uno, mostrando el valor en la cima de la pila antes y después de cada operación.
+
+\section{Aplicaciones Comunes de las Pilas}
+Las pilas son estructuras de datos fundamentales en programación, y se utilizan en una variedad de contextos, como el procesamiento de expresiones matemáticas y la administración de las llamadas a funciones. A continuación, se presentan tres ejemplos prácticos que muestran cómo las pilas se utilizan en situaciones del mundo real.
+
+\subsection{1. Evaluación de Expresiones Aritméticas}
+Las pilas son ampliamente utilizadas para la evaluación de expresiones en notación postfija (también conocida como notación polaca inversa). En esta notación, los operadores siguen a sus operandos, y las pilas se utilizan para almacenar los operandos mientras se procesan los operadores.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Evaluación de Expresión Postfija]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int evaluarPostfija(string exp) {
+    stack<int> pila;
+
+    for (char c : exp) {
+        if (isdigit(c)) {
+            pila.push(c - '0');
+        } else {
+            int b = pila.top(); pila.pop();
+            int a = pila.top(); pila.pop();
+            if (c == '+') pila.push(a + b);
+            if (c == '-') pila.push(a - b);
+            if (c == '*') pila.push(a * b);
+            if (c == '/') pila.push(a / b);
+        }
+    }
+    return pila.top();
+}
+
+int main() {
+    string exp = "23+5*";
+    cout << "Resultado: " << evaluarPostfija(exp) << endl;
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código evalúa la expresión postfija "23+5*" y devuelve el resultado. La pila almacena los operandos mientras procesa los operadores.
+
+\subsection{2. Deshacer y Rehacer Operaciones en un Editor de Texto}
+En aplicaciones como editores de texto, las pilas se utilizan para implementar las funciones de deshacer (undo) y rehacer (redo). Cada acción del usuario se guarda en una pila de deshacer, y cuando el usuario desea deshacer una acción, el último elemento de la pila se retira.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Deshacer y Rehacer]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <stack>
+using namespace std;
+
+class Editor {
+private:
+    stack<string> undoStack;
+    stack<string> redoStack;
+
+public:
+    void escribir(string texto) {
+        undoStack.push(texto);
+        cout << "Texto escrito: " << texto << endl;
+    }
+
+    void deshacer() {
+        if (undoStack.empty()) {
+            cout << "No hay más acciones para deshacer." << endl;
+        } else {
+            string texto = undoStack.top();
+            undoStack.pop();
+            redoStack.push(texto);
+            cout << "Deshecho: " << texto << endl;
+        }
+    }
+
+    void rehacer() {
+        if (redoStack.empty()) {
+            cout << "No hay más acciones para rehacer." 
+            << endl;
+        } else {
+            string texto = redoStack.top();
+            redoStack.pop();
+            undoStack.push(texto);
+            cout << "Rehecho: " << texto << endl;
+        }
+    }
+};
+
+int main() {
+    Editor editor;
+    editor.escribir("Hola");
+    editor.escribir("Mundo");
+    editor.deshacer();
+    editor.rehacer();
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código implementa las funcionalidades de deshacer y rehacer utilizando dos pilas, una para las acciones de deshacer y otra para las de rehacer.
+
+\subsection{3. Gestión de Funciones en un Programa}
+Las pilas se utilizan para gestionar las llamadas a funciones en un programa. Cada vez que una función se llama, se coloca un registro en la pila de llamadas. Cuando la función termina, el registro se retira de la pila.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Pila de Llamadas a Funciones]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+#include <stack>
+using namespace std;
+
+void funcion1() {
+    cout << "Ejecutando función 1." << endl;
+}
+
+void funcion2() {
+    cout << "Ejecutando función 2." << endl;
+}
+
+void ejecutarFunciones() {
+    stack<string> pilaDeLlamadas;
+
+    pilaDeLlamadas.push("funcion1");
+    funcion1();
+    pilaDeLlamadas.push("funcion2");
+    funcion2();
+
+    cout << "Pilas de funciones llamadas: ";
+    while (!pilaDeLlamadas.empty()) {
+        cout << pilaDeLlamadas.top() << " ";
+        pilaDeLlamadas.pop();
+    }
+    cout << endl;
+}
+
+int main() {
+    ejecutarFunciones();
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+Este código simula cómo las funciones se colocan y retiran de la pila de llamadas a medida que se ejecutan.
+
+\section{Resumen del Capítulo}
+En este capítulo, aprendimos sobre las **pilas** y su funcionamiento según el principio **LIFO**. Implementamos pilas con arreglos y vimos ejemplos prácticos de aplicaciones de las pilas, tales como:
+
+1. **Evaluación de expresiones aritméticas**.
+2. **Deshacer y rehacer operaciones en un editor de texto**.
+3. **Gestión de funciones en un programa**.
+
+Las pilas son estructuras de datos fundamentales en la programación y tienen una amplia gama de aplicaciones en situaciones del mundo real.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen Visual]
+\begin{itemize}
+    \item Una pila sigue el principio LIFO.
+    \item Las pilas se utilizan en la evaluación de expresiones, deshacer/rehacer operaciones, y la gestión de funciones.
+    \item Pueden implementarse con arreglos o listas enlazadas.
+\end{itemize}
+\end{tcolorbox}
+
+
+\chapter{Recursividad}
+
+\section{¿Qué es la Recursividad?}
+La \textbf{recursividad} es una técnica de programación donde una función se llama a sí misma para resolver un problema más grande, dividiéndolo en subproblemas más pequeños y similares. Es una herramienta poderosa que puede hacer que el código sea más simple y fácil de entender en muchos casos.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=\textbf{Definición clara}]
+La recursividad se resuelve a través de dos principios clave:
+\begin{itemize}
+    \item \textbf{Caso base:} Es la condición que detiene la recursión. Evita que la función se llame infinitamente.
+    \item \textbf{Llamada recursiva:} Es cuando la función se llama a sí misma con una versión más simple del problema.
+\end{itemize}
+\end{tcolorbox}
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{recursion-graph.png} % Gráfico representando una llamada recursiva
+\end{center}
+
+\textit{Figura: Ejemplo visual de una función que se llama a sí misma.}
+
+\section{¿Por qué es importante la Recursividad?}
+La recursividad es importante porque:
+\begin{itemize}
+    \item Permite resolver problemas complejos de manera más elegante.
+    \item Reduce la cantidad de código al dividir el problema en subproblemas más simples.
+    \item Facilita la comprensión de problemas con estructuras de datos como árboles, listas enlazadas, y más.
+\end{itemize}
+
+\section{Funcionamiento Interno de la Recursividad}
+Cuando una función se llama a sí misma, se crea una nueva instancia de esa función en la \textbf{pila de llamadas} (call stack). Cuando la función llega al \textbf{caso base}, las funciones empiezan a resolverse una por una hasta volver a la original.
+
+\begin{center}
+\includegraphics[width=0.7\textwidth]{stack-recursion.png} % Gráfico que muestra la pila de llamadas de una función recursiva
+\end{center}
+
+\textit{Figura: La pila de llamadas en la recursividad.}
+
+\section{Ejemplo clásico: Factorial}
+Un ejemplo clásico de recursividad es el cálculo del factorial de un número. El \textbf{factorial} de un número \( n \) se define como:
+
+\[
+n! = n \times (n - 1) \times (n - 2) \times \dots \times 1
+\]
+
+\textbf{Ejemplo:} \( 4! = 4 \times 3 \times 2 \times 1 = 24 \)
+
+La versión recursiva en C++ de este cálculo es:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Factorial Recursivo]
+\begin{lstlisting}[language=C++]
+int factorial(int n) {
+    if (n == 0) return 1;      // Caso base
+    return n * factorial(n - 1); // Llamada recursiva
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. **Caso base**: Cuando \( n = 0 \), retornamos 1.
+2. **Llamada recursiva**: La función se llama a sí misma con \( n - 1 \) hasta que llega al caso base.
+
+\section{Ejemplo 2: Serie de Fibonacci}
+La serie de Fibonacci es una sucesión matemática donde cada número es la suma de los dos anteriores. La serie comienza con \( 0, 1, 1, 2, 3, 5, 8, 13, \dots \).
+
+\textbf{Fórmula:}
+\[
+F(n) = F(n-1) + F(n-2) \quad \text{con } F(0) = 0 \text{ y } F(1) = 1
+\]
+
+La versión recursiva de Fibonacci en C++ es:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Fibonacci Recursivo]
+\begin{lstlisting}[language=C++]
+int fibonacci(int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. **Caso base**: Cuando \( n = 0 \), retornamos 0; cuando \( n = 1 \), retornamos 1.
+2. **Llamada recursiva**: La función se llama a sí misma con los valores \( n-1 \) y \( n-2 \).
+
+Este ejemplo ilustra cómo la recursividad puede ser simple y poderosa, pero también ineficiente para valores grandes debido a la repetición de cálculos. 
+
+\section{Ejemplo 3: Búsqueda Binaria Recursiva}
+La búsqueda binaria es un algoritmo eficiente para encontrar un valor en un arreglo ordenado. El algoritmo divide el rango de búsqueda a la mitad en cada paso, lo que lo convierte en un algoritmo muy eficiente.
+
+\textbf{Fórmula:}
+\[
+\text{Si el valor buscado es mayor que el valor medio, buscamos en la mitad superior. Si es menor, buscamos en la mitad inferior.}
+\]
+
+La versión recursiva de la búsqueda binaria en C++ es:
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Búsqueda Binaria Recursiva]
+\begin{lstlisting}[language=C++]
+int busquedaBinaria(int arr[], int izquierda, int derecha, int valor) {
+    if (izquierda > derecha) return -1; // No encontrado
+
+    int medio = (izquierda + derecha) / 2;
+
+    if (arr[medio] == valor) return medio;
+    if (arr[medio] > valor)
+        return busquedaBinaria(arr, izquierda, medio - 1, valor);
+    else
+        return busquedaBinaria(arr, medio + 1, derecha, valor);
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. **Caso base**: Si el valor no se encuentra en el arreglo, se retorna -1.
+2. **Llamada recursiva**: La función se llama con los nuevos límites del arreglo en función de la comparación con el valor medio.
+
+\section{Ejemplos prácticos de uso de la Recursividad}
+La recursividad se utiliza en muchos problemas del mundo real. A continuación, se presentan tres ejemplos prácticos donde la recursividad es la solución más eficiente o natural.
+
+\subsection{1. Caminos en un Laberinto}
+Imagina un laberinto donde quieres encontrar un camino desde el inicio hasta la salida. Usando recursividad, puedes explorar cada posible camino hasta encontrar la salida, y si un camino no lleva a la salida, retroceder.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Resolver un Laberinto con Recursividad]
+\begin{lstlisting}[language=C++]
+bool resolverLaberinto(int laberinto[5][5], int x, int y, int salidaX, int salidaY) {
+    if (x == salidaX && y == salidaY) return true; // Caso base: salida encontrada
+
+    // Marcar la posición actual como visitada
+    laberinto[x][y] = 2;
+
+    // Intentar mover hacia abajo, arriba, izquierda o derecha
+    if (x + 1 < 5 && laberinto[x + 1][y] == 0 && resolverLaberinto(laberinto, x + 1, y, salidaX, salidaY)) return true;
+    if (x - 1 >= 0 && laberinto[x - 1][y] == 0 && resolverLaberinto(laberinto, x - 1, y, salidaX, salidaY)) return true;
+    if (y + 1 < 5 && laberinto[x][y + 1] == 0 && resolverLaberinto(laberinto, x, y + 1, salidaX, salidaY)) return true;
+    if (y - 1 >= 0 && laberinto[x][y - 1] == 0 && resolverLaberinto(laberinto, x, y - 1, salidaX, salidaY)) return true;
+
+    // Si no se encuentra la salida, retrocedemos
+    return false;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+Este ejemplo muestra cómo la recursividad puede ser utilizada para explorar todos los caminos posibles en un laberinto y encontrar la salida. Si se encuentra una ruta, la función retorna \texttt{true}.
+
+\subsection{2. Torres de Hanoi}
+El problema de las Torres de Hanoi es un clásico problema recursivo que consiste en mover una pila de discos de una torre a otra, siguiendo ciertas reglas.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Torres de Hanoi]
+\begin{lstlisting}[language=C++]
+void hanoi(int n, char origen, char auxiliar, char destino) {
+    if (n == 1) {
+        cout << "Mover disco 1 de " << origen << " a " << destino << endl;
+        return;
+    }
+    hanoi(n - 1, origen, destino, auxiliar); // Mover n-1 discos
+    cout << "Mover disco " << n << " de " << origen << " a " << destino << endl;
+    hanoi(n - 1, auxiliar, origen, destino); // Mover los discos restantes
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+Este problema muestra cómo la recursividad puede descomponer un problema complejo en subproblemas más simples, moviendo discos de una torre a otra. La función se llama a sí misma para mover los discos de la torre auxiliar.
+
+\subsection{3. Búsqueda en un Árbol Binario}
+La recursividad también es útil para recorrer estructuras de datos jerárquicas como los árboles binarios. Aquí se muestra cómo realizar una búsqueda en un árbol binario.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Búsqueda en un Árbol Binario]
+\begin{lstlisting}[language=C++]
+struct Nodo {
+    int dato;
+    Nodo* izquierdo;
+    Nodo* derecho;
+};
+
+bool buscar(Nodo* raiz, int valor) {
+    if (raiz == nullptr) return false; // Caso base: árbol vacío
+
+    if (raiz->dato == valor) return true; // Valor encontrado
+
+    // Buscar en el subárbol izquierdo o derecho
+    return buscar(raiz->izquierdo, valor) || buscar(raiz->derecho, valor);
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+Este código muestra cómo se puede usar recursividad para recorrer un árbol binario y buscar un valor en cualquiera de sus nodos.
+
+\section{Resumen del Capítulo}
+En este capítulo, exploramos la técnica de la **recursividad** y cómo se puede utilizar para resolver problemas complejos. Vimos ejemplos clásicos como el cálculo del factorial, la serie de Fibonacci y la búsqueda binaria. Además, discutimos tres ejemplos prácticos de recursividad en el mundo real:
+
+1. **Caminos en un Laberinto**.
+2. **Torres de Hanoi**.
+3. **Búsqueda en un Árbol Binario**.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen Visual]
+\begin{itemize}
+    \item La recursividad resuelve problemas dividiendo un problema grande en subproblemas más pequeños.
+    \item Requiere un caso base para evitar llamadas infinitas.
+    \item Se usa en situaciones como búsquedas, recorridos en árboles, y problemas como las Torres de Hanoi.
+\end{itemize}
+\end{tcolorbox}
+
+
+\chapter{Algoritmos de Ordenación}
+
+\section{¿Qué es un Algoritmo de Ordenación?}
+Un algoritmo de ordenación es un proceso utilizado para reorganizar los elementos de una lista o arreglo en un orden específico. El orden puede ser ascendente o descendente, dependiendo de los requisitos del problema.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{sorting_example.png} % Gráfico representando un algoritmo de ordenación
+\end{center}
+
+\textbf{Imagen:} Representación visual de un algoritmo de ordenación que organiza los elementos de menor a mayor.
+
+\section{Algoritmos de Ordenación Comunes}
+Existen varios algoritmos de ordenación, entre los más conocidos están:
+
+\begin{itemize}
+    \item **Ordenación por burbuja (Bubble Sort)**: Es simple pero ineficiente para listas grandes. Compara elementos adyacentes y los intercambia si están en el orden incorrecto.
+    \item **Ordenación por selección (Selection Sort)**: Encuentra el mínimo (o máximo) de la lista y lo coloca en la posición correcta.
+    \item **Ordenación por inserción (Insertion Sort)**: Construye el arreglo ordenado a medida que recorre la lista, insertando cada elemento en su posición correspondiente.
+    \item **Ordenación rápida (Quick Sort)**: Utiliza el enfoque de dividir y vencerás, seleccionando un pivote y organizando los elementos alrededor de él.
+    \item **Ordenación por mezcla (Merge Sort)**: También utiliza dividir y vencerás, dividiendo el arreglo en subarreglos más pequeños y luego fusionándolos de manera ordenada.
+\end{itemize}
+
+\section{Algoritmo de Ordenación por Burbuja (Bubble Sort)}
+El algoritmo de ordenación por burbuja compara cada par de elementos adyacentes en el arreglo y los intercambia si están en el orden incorrecto. Este proceso se repite hasta que no se requieren más intercambios.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Ordenación por Burbuja]
+\begin{lstlisting}[language=C++]
+void burbuja(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                // Intercambiar
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El algoritmo realiza \texttt{n-1} pasadas sobre el arreglo.
+2. En cada pasada, compara los elementos adyacentes y los intercambia si están en el orden incorrecto.
+3. Al final de cada pasada, el elemento más grande se coloca en su posición correcta.
+
+\section{Ejemplo: Ordenación por Burbuja}
+A continuación, vemos cómo usar el algoritmo de burbuja para ordenar un arreglo:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Ordenación por Burbuja]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    burbuja(arr, n);
+
+    cout << "Arreglo ordenado: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El arreglo se ordena utilizando el algoritmo de burbuja.
+2. Después de la ordenación, el arreglo se imprime en orden ascendente.
+
+\section{Algoritmo de Ordenación por Selección (Selection Sort)}
+El algoritmo de ordenación por selección divide el arreglo en dos partes: una parte ordenada y una parte no ordenada. En cada iteración, selecciona el elemento más pequeño de la parte no ordenada y lo coloca al final de la parte ordenada.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Ordenación por Selección]
+\begin{lstlisting}[language=C++]
+void seleccion(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        // Intercambiar el mínimo con el primer elemento no ordenado
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El algoritmo recorre la parte no ordenada del arreglo en cada iteración.
+2. Encuentra el elemento más pequeño y lo intercambia con el primer elemento no ordenado.
+3. Repite este proceso hasta que todo el arreglo esté ordenado.
+
+\section{Ejemplo: Ordenación por Selección}
+A continuación, se muestra cómo usar el algoritmo de selección para ordenar un arreglo:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Ordenación por Selección]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    seleccion(arr, n);
+
+    cout << "Arreglo ordenado: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El arreglo se ordena utilizando el algoritmo de selección.
+2. Después de la ordenación, el arreglo se imprime en orden ascendente.
+
+\section{Algoritmo de Ordenación por Inserción (Insertion Sort)}
+El algoritmo de ordenación por inserción construye el arreglo ordenado elemento por elemento, insertando cada nuevo elemento en la posición correcta.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Ordenación por Inserción]
+\begin{lstlisting}[language=C++]
+void insercion(int arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        // Mover los elementos del arreglo que son mayores que key
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. Comienza desde el segundo elemento y lo compara con los elementos anteriores.
+2. Inserta el elemento en su posición correcta dentro de la parte ordenada del arreglo.
+
+\section{Ejemplo: Ordenación por Inserción}
+Aquí se muestra cómo usar el algoritmo de inserción para ordenar un arreglo:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Ordenación por Inserción]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    insercion(arr, n);
+
+    cout << "Arreglo ordenado: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El arreglo se ordena utilizando el algoritmo de inserción.
+2. Después de la ordenación, el arreglo se imprime en orden ascendente.
+
+\section{Algoritmo de Ordenación Rápida (Quick Sort)}
+El algoritmo de ordenación rápida utiliza el enfoque de dividir y vencerás. Se selecciona un pivote y luego se reorganizan los elementos en dos particiones: una con los elementos menores que el pivote y otra con los elementos mayores.
+
+\begin{tcolorbox}[colback=cyan!5!white, colframe=cyan!75!black, title=Ejemplo: Ordenación Rápida]
+\begin{lstlisting}[language=C++]
+int particionar(int arr[], int bajo, int alto) {
+    int pivote = arr[alto];
+    int i = bajo - 1;
+    for (int j = bajo; j < alto; j++) {
+        if (arr[j] <= pivote) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[alto]);
+    return i + 1;
+}
+
+void quickSort(int arr[], int bajo, int alto) {
+    if (bajo < alto) {
+        int pi = particionar(arr, bajo, alto);
+        quickSort(arr, bajo, pi - 1);
+        quickSort(arr, pi + 1, alto);
+    }
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El algoritmo selecciona un pivote.
+2. Luego divide el arreglo en dos partes, una con elementos menores que el pivote y otra con elementos mayores.
+3. Llama recursivamente a \texttt{quickSort} para ordenar ambas particiones.
+
+\section{Ejemplo: Ordenación Rápida}
+A continuación, se muestra cómo usar el algoritmo de ordenación rápida:
+
+\begin{tcolorbox}[colback=orange!5!white, colframe=orange!80!black, title=Ejemplo: Usar la Ordenación Rápida]
+\begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    quickSort(arr, 0, n - 1);
+
+    cout << "Arreglo ordenado: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+\end{lstlisting}
+\end{tcolorbox}
+
+### Explicación:
+1. El arreglo se ordena utilizando el algoritmo de ordenación rápida.
+2. Después de la ordenación, el arreglo se imprime en orden ascendente.
+
+\section{Resumen del Capítulo}
+En este capítulo, aprendimos sobre los diferentes algoritmos de ordenación y su implementación en C++. Los algoritmos cubiertos son:
+\begin{itemize}
+    \item **Ordenación por burbuja (Bubble Sort)**.
+    \item **Ordenación por selección (Selection Sort)**.
+    \item **Ordenación por inserción (Insertion Sort)**.
+    \item **Ordenación rápida (Quick Sort)**.
+\end{itemize}
+
+Además, proporcionamos ejemplos prácticos para cada uno de ellos, mostrando cómo ordenar un arreglo de manera eficiente.
+
+\begin{tcolorbox}[colback=blue!5!white, colframe=blue!75!black, title=Resumen Visual]
+\begin{itemize}
+    \item Los algoritmos de ordenación reorganizan los elementos de un arreglo en un orden específico.
+    \item Diferentes algoritmos tienen ventajas según el tamaño de los datos y la eficiencia deseada.
+    \item La ordenación rápida es más eficiente para arreglos grandes, mientras que la ordenación por burbuja es más fácil de entender pero menos eficiente.
+\end{itemize}
+\end{tcolorbox}
+
+
+\chapter*{Glosario}
+\addcontentsline{toc}{chapter}{Glosario}
+
+\section{Términos en Español}
+\begin{itemize}
+    \item \textbf{Algoritmo}: Un conjunto de pasos o instrucciones finitas que resuelven un problema o realizan una tarea.
+    \item \textbf{Recursividad}: Técnica de programación en la que una función se llama a sí misma para resolver problemas de manera más eficiente.
+    \item \textbf{Pila}: Estructura de datos que sigue el principio \textbf{LIFO} (Last In, First Out), donde el último elemento agregado es el primero en ser removido.
+    \item \textbf{Cola}: Estructura de datos que sigue el principio \textbf{FIFO} (First In, First Out), donde el primer elemento agregado es el primero en ser removido.
+    \item \textbf{Algoritmos de Ordenación}: Algoritmos que reorganizan los elementos de una lista o arreglo en un orden específico (ascendente o descendente).
+    \item \textbf{Burbuja (Bubble Sort)}: Algoritmo de ordenación que compara y organiza los elementos adyacentes, repitiendo el proceso hasta que el arreglo esté ordenado.
+    \item \textbf{Selección (Selection Sort)}: Algoritmo de ordenación que selecciona el elemento más pequeño y lo coloca en la posición correcta, repitiendo el proceso para el resto del arreglo.
+    \item \textbf{Inserción (Insertion Sort)}: Algoritmo de ordenación que construye el arreglo ordenado insertando cada nuevo elemento en la posición correcta.
+    \item \textbf{Ordenación rápida (Quick Sort)}: Algoritmo eficiente de ordenación que divide y organiza los elementos alrededor de un pivote.
+\end{itemize}
+
+\section{Terms in English}
+\begin{itemize}
+    \item \textbf{Algorithm}: A set of finite steps or instructions that solve a problem or perform a task.
+    \item \textbf{Recursion}: A programming technique where a function calls itself to solve problems more efficiently.
+    \item \textbf{Stack}: A data structure that follows the \textbf{LIFO} (Last In, First Out) principle, where the last element added is the first to be removed.
+    \item \textbf{Queue}: A data structure that follows the \textbf{FIFO} (First In, First Out) principle, where the first element added is the first to be removed.
+    \item \textbf{Sorting Algorithms}: Algorithms that rearrange the elements of a list or array in a specific order (ascending or descending).
+    \item \textbf{Bubble Sort}: A sorting algorithm that compares and sorts adjacent elements, repeating the process until the array is sorted.
+    \item \textbf{Selection Sort}: A sorting algorithm that selects the smallest element and places it in the correct position, repeating the process for the rest of the array.
+    \item \textbf{Insertion Sort}: A sorting algorithm that builds the sorted array by inserting each new element in the correct position.
+    \item \textbf{Quick Sort}: An efficient sorting algorithm that divides and organizes the elements around a pivot.
+\end{itemize}
+
+\chapter*{Solucionario}
+\addcontentsline{toc}{chapter}{Solucionario}
+
+\section{Ejercicios del Capítulo 1: Introducción a la Programación en C++}
+\begin{itemize}
+    \item \textbf{Ejercicio 1: "Hola Mundo"}: El programa debe mostrar en pantalla el mensaje "Hola Mundo!".
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hola Mundo!" << endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 2: Nombre del Usuario}: El programa debe pedir al usuario su nombre e imprimirlo en pantalla.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string nombre;
+    cout << "¿Cuál es tu nombre? ";
+    cin >> nombre;
+    cout << "Hola, " << nombre << "!" << endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 3: Cálculo de Edad en 5 Años}: El programa debe calcular cuántos años tendrá el usuario en 5 años.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int edad;
+    cout << "¿Cuántos años tienes? ";
+    cin >> edad;
+    cout << "En 5 años tendrás " << edad + 5 << " años." << endl;
+    return 0;
+}
+    \end{lstlisting}
+\end{itemize}
+
+\section{Ejercicios del Capítulo 2: Arrays}
+\begin{itemize}
+    \item \textbf{Ejercicio 1: Invertir el Arreglo}: El programa debe invertir un arreglo de 10 números y mostrarlo.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[10];
+    cout << "Ingresa 10 números: ";
+    for (int i = 0; i < 10; i++) {
+        cin >> arr[i];
+    }
+    cout << "Arreglo invertido: ";
+    for (int i = 9; i >= 0; i--) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 2: Mayor de Números}: El programa debe encontrar el número mayor entre 5 valores ingresados por el usuario.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    int arr[5], mayor;
+    cout << "Ingresa 5 números: ";
+    for (int i = 0; i < 5; i++) {
+        cin >> arr[i];
+    }
+    mayor = arr[0];
+    for (int i = 1; i < 5; i++) {
+        if (arr[i] > mayor) {
+            mayor = arr[i];
+        }
+    }
+    cout << "El mayor número es: " << mayor << endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 3: Precio Total de Productos}: El programa debe calcular el total de precios de 4 productos y mostrar el resultado.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int main() {
+    float arr[4], total = 0;
+    cout << "Ingresa el precio de 4 productos: ";
+    for (int i = 0; i < 4; i++) {
+        cin >> arr[i];
+        total += arr[i];
+    }
+    cout << "El total a pagar es: " << total << endl;
+    return 0;
+}
+    \end{lstlisting}
+\end{itemize}
+
+\section{Ejercicios del Capítulo 3: Pilas}
+\begin{itemize}
+    \item \textbf{Ejercicio 1: Pila de Enteros}: El programa debe crear una pila de enteros y realizar operaciones de inserción y eliminación.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> pila;
+
+    pila.push(10);
+    pila.push(20);
+    pila.push(30);
+
+    cout << "Elemento en la cima: " << pila.top() << endl;
+
+    pila.pop();
+    cout << "Elemento retirado: " << pila.top() << endl;
+
+    pila.pop();
+    cout << "Elemento retirado: " << pila.top() << endl;
+
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 2: Factorial Recursivo}: El programa debe calcular el factorial de un número utilizando recursividad.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+int factorial(int n) {
+    if (n == 0) return 1;
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int n;
+    cout << "Ingresa un número para calcular su factorial: ";
+    cin >> n;
+    cout << "El factorial de " << n << " es: " << factorial(n) << endl;
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 3: Búsqueda en Árbol Binario}: El programa debe buscar un valor en un árbol binario.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* izquierdo;
+    Nodo* derecho;
+};
+
+bool buscar(Nodo* raiz, int valor) {
+    if (raiz == nullptr) return false;
+    if (raiz->dato == valor) return true;
+    return buscar(raiz->izquierdo, valor) || buscar(raiz->derecho, valor);
+}
+
+int main() {
+    Nodo* raiz = new Nodo{10, nullptr, nullptr};
+    raiz->izquierdo = new Nodo{5, nullptr, nullptr};
+    raiz->derecho = new Nodo{15, nullptr, nullptr};
+
+    cout << "¿El valor 5 está en el árbol? " << (buscar(raiz, 5) ? "Sí" : "No") << endl;
+
+    return 0;
+}
+    \end{lstlisting}
+\end{itemize}
+
+\section{Ejercicios del Capítulo 4: Colas}
+\begin{itemize}
+    \item \textbf{Ejercicio 1: Cola de Atención al Cliente}: El programa debe simular una cola de atención al cliente.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<string> cola;
+
+    cola.push("Juan");
+    cola.push("Maria");
+    cola.push("Pedro");
+
+    cout << "Atendiendo a: " << cola.front() << endl;
+    cola.pop();
+
+    cout << "Atendiendo a: " << cola.front() << endl;
+    cola.pop();
+
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 2: Cola Circular}: El programa debe crear una cola circular que reutilice espacio cuando se eliminan elementos.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+#define MAX 5
+class ColaCircular {
+private:
+    int cola[MAX];
+    int frente, fin;
+
+public:
+    ColaCircular() {
+        frente = -1;
+        fin = -1;
+    }
+
+    bool estaVacia() {
+        return frente == -1;
+    }
+
+    bool estaLlena() {
+        return (fin + 1) % MAX == frente;
+    }
+
+    void enqueue(int valor) {
+        if (estaLlena()) {
+            cout << "La cola circular está llena." << endl;
+            return;
+        }
+        if (frente == -1) frente = 0;
+        fin = (fin + 1) % MAX;
+        cola[fin] = valor;
+    }
+
+    int dequeue() {
+        if (estaVacia()) {
+            cout << "La cola circular está vacía." << endl;
+            return -1;
+        }
+        int valor = cola[frente];
+        if (frente == fin) {
+            frente = fin = -1;
+        } else {
+            frente = (frente + 1) % MAX;
+        }
+        return valor;
+    }
+};
+
+int main() {
+    ColaCircular cola;
+
+    cola.enqueue(10);
+    cola.enqueue(20);
+    cola.enqueue(30);
+    cola.enqueue(40);
+
+    cout << "Elemento retirado: " << cola.dequeue() << endl;
+
+    return 0;
+}
+    \end{lstlisting}
+    
+    \item \textbf{Ejercicio 3: Cola de Impresión}: El programa debe simular una cola de impresión.
+    \begin{lstlisting}[language=C++]
+#include <iostream>
+using namespace std;
+
+struct TrabajoImpresion {
+    string documento;
+    int paginas;
+};
+
+class ColaImpresion {
+private:
+    TrabajoImpresion cola[MAX];
+    int frente, fin;
+
+public:
+    ColaImpresion() {
+        frente = -1;
+        fin = -1;
+    }
+
+    void agregarTrabajo(string documento, int paginas) {
+        if (fin == MAX - 1) {
+            cout << "La cola de impresión está llena." << endl;
+            return;
+        }
+        if (frente == -1) frente = 0;
+        cola[++fin] = {documento, paginas};
+    }
+
+    void procesarTrabajo() {
+        if (frente == -1) {
+            cout << "No hay trabajos en la cola." << endl;
+            return;
+        }
+        cout << "Imprimiendo: " << cola[frente].documento << " (" << cola[frente].paginas << " páginas)" << endl;
+        if (frente == fin) frente = fin = -1;
+        else frente++;
+    }
+
+    void mostrarCola() {
+        if (frente == -1) {
+            cout << "No hay trabajos pendientes." << endl;
+            return;
+        }
+        for (int i = frente; i <= fin; i++) {
+            cout << cola[i].documento << " (" << cola[i].paginas << " páginas) <- ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    ColaImpresion cola;
+
+    cola.agregarTrabajo("Documento1", 10);
+    cola.agregarTrabajo("Documento2", 20);
+    cola.procesarTrabajo();
+
+    return 0;
+}
+    \end{lstlisting}
+\end{itemize}
+
+
+\end{document}
+
